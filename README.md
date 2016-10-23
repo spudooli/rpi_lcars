@@ -15,8 +15,9 @@ Changes made in "core" will, whenever possible, retain backwards compatibility w
 # Acknowledgements
 - Orignal code by Toby Kurien
 - Inspiration and advice from [Techni Myoko](https://sites.google.com/site/neotechni/)
-- LCARS is copyright [CBS Studios Inc.](http://www.cbs.com/) and is subject to [the fair use statute](http://www.lcars.mobi/legal/)
+- Deep Space 9 3D model by [David Metlesits](http://thefirstfleet.deviantart.com/)
 - LCARS images and audio assets from [lcarscom.net](http://www.lcarscom.net)
+- LCARS is copyright [CBS Studios Inc.](http://www.cbs.com/) and is subject to [the fair use statute](http://www.lcars.mobi/legal/)
 
 # License
 > **Note**: Original code from Toby Kurien was released under the MIT license. I am invoking my right to sublicense that project and have released this fork under the GPLv3. For merging purposes, the "core" branch retains its original MIT license.
