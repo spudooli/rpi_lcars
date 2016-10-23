@@ -3,6 +3,10 @@
 # Raspberry Pi LCARS Interface
 This project is an attempt to create a functional [LCARS](https://en.wikipedia.org/wiki/LCARS) interface for the [Raspberry Pi](https://raspberrypi.org/) using [Pygame](http://www.pygame.org). It's based heavily on the pioneering work of [Toby Kurien](https://tobykurien.com/).
 
+# Changes/Additions
+- Functional navigation buttons on side panel
+- Functional (but not secure!) authentication screen
+
 # Branches
 The master branch of this repository is the code running on my personal hardware setup. It may or may not be useful for others as-is. The secondary "core" branch is intended to be suitable for upstream merges or for other users who wish to customize their own version.
 
