@@ -38,7 +38,7 @@ class ScreenMain(LcarsScreen):
         all_sprites.add(LcarsButton(colours.PEACH, "nav", (365, 15), "", self.load_template), layer=4)
 
         # Rotating Deep Space 9
-        all_sprites.add(LcarsGifImage("assets/ds9_3d.gif", (148, 475), 100), layer=1)
+        all_sprites.add(LcarsGifImage("assets/animated/ds9_3d.gif", (148, 475), 100), layer=1)
 
         self.beep1 = Sound("assets/audio/panel/201.wav")
         Sound("assets/audio/panel/220.wav").play()

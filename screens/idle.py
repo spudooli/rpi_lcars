@@ -13,7 +13,7 @@ class ScreenIdle(LcarsScreen):
         all_sprites.add(LcarsText(colours.ORANGE, (270, -1), "AUTHORIZATION REQUIRED", 2), layer=1)
         all_sprites.add(LcarsText(colours.BLUE, (330, -1), "ONLY AUTHORIZED PERSONNEL MAY ACCESS THIS TERMINAL", 1.5), layer=1)
         all_sprites.add(LcarsText(colours.BLUE, (360, -1), "TOUCH TERMINAL TO PROCEED", 1.5), layer=1)
-        all_sprites.add(LcarsGifImage("assets/gadgets/stlogorotating.gif", (103, 369), 50), layer=1)
+        all_sprites.add(LcarsGifImage("assets/animated/st_logo.gif", (103, 369), 50), layer=1)
 
         # sounds
         Sound("assets/audio/panel/215.wav").play()
