@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# Main LCARS launcher
 from screens.idle import ScreenIdle
 from ui.ui import UserInterface
 
