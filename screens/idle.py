@@ -34,7 +34,7 @@ class ScreenIdle(LcarsScreen):
         if event.type == pygame.MOUSEBUTTONUP:
             if (self.granted):
                 #self.sound_granted.play()
-                from screens.authorize import ScreenAuthorize
-                self.loadScreen(ScreenAuthorize())
+                from screens.main import ScreenMain
+                self.loadScreen(ScreenMain())
 
         return False
