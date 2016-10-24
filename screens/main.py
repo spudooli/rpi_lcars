@@ -2,6 +2,8 @@ from datetime import datetime
 import pygame
 from pygame.mixer import Sound
 
+from ui.utils.loadinfo import *
+
 from ui import colours
 from ui.widgets.background import LcarsBackgroundImage, LcarsImage
 from ui.widgets.gifimage import LcarsGifImage
@@ -23,19 +25,29 @@ class ScreenMain(LcarsScreen):
         all_sprites.add(LcarsText(colours.BLACK, (8, 40), "LCARS 1123"), layer=1)
         all_sprites.add(LcarsText(colours.ORANGE, (0, 135), "MAIN MENU", 2), layer=1)
 
-        # Alert text, placehoder, will load from file eventually
-        all_sprites.add(LcarsText(colours.ORANGE, (192, 174), "SYSTEM ALERTS:", 1.5), layer=3)
-        all_sprites.add(LcarsText(colours.BLUE, (244, 184), "NO CURRENT ALERTS", 1.5), layer=3)
-        all_sprites.add(LcarsText(colours.BLUE, (286, 184), "ALL SYSTEMS ONLINE", 1.5), layer=3)
-        self.info_text = all_sprites.get_sprites_from_layer(3)
-
-        # buttons
+        # Buttons
         all_sprites.add(LcarsButton(colours.RED_BROWN, "btn", (6, 662), "LOGOUT", self.load_idle), layer=4)
         all_sprites.add(LcarsButton(colours.BEIGE, "nav", (145, 15), "ENVIRO", self.load_enviro), layer=4)
         all_sprites.add(LcarsButton(colours.PURPLE, "nav", (200, 15), "NETWORK", self.load_network), layer=4)
         all_sprites.add(LcarsButton(colours.BLUE, "nav", (255, 15), "POWER", self.load_power), layer=4)
         all_sprites.add(LcarsButton(colours.ORANGE, "nav", (310, 15), "EMERGENCY", self.load_auth), layer=4)
         all_sprites.add(LcarsButton(colours.PEACH, "nav", (365, 15), "", self.load_template), layer=4)
+
+        # Load data from file
+        returnpayload = readtxt("/tmp/alerts.txt")
+
+        all_sprites.add(LcarsText(colours.ORANGE, (137, 133), returnpayload[0], 1.8), layer=3)
+
+        # Loop through results
+        index = 1
+        ypos = 190
+        while index < 5:
+            all_sprites.add(LcarsText(colours.BLUE, (ypos, 150), returnpayload[index], 1.5), layer=3)
+            # Bump index and vertical pos
+            index += 1
+            ypos += 50
+
+        self.info_text = all_sprites.get_sprites_from_layer(3)
 
         # Rotating Deep Space 9
         all_sprites.add(LcarsGifImage("assets/animated/ds9_3d.gif", (148, 475), 100), layer=1)
