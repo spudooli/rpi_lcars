@@ -10,9 +10,9 @@ from ui.widgets.screen import LcarsScreen
 class ScreenIdle(LcarsScreen):
     def setup(self, all_sprites):
         all_sprites.add(LcarsBackgroundImage("assets/lcars_splash.png"), layer=0)
-        all_sprites.add(LcarsText(colours.ORANGE, (270, -1), "AUTHORIZATION REQUIRED", 2), layer=1)
+        all_sprites.add(LcarsText(colours.ORANGE, (270, -1), "LCARS SYSTEM MONITOR", 1.8), layer=1)
         all_sprites.add(LcarsText(colours.BLUE, (330, -1), "ONLY AUTHORIZED PERSONNEL MAY ACCESS THIS TERMINAL", 1.5), layer=1)
-        all_sprites.add(LcarsText(colours.BLUE, (360, -1), "TOUCH TERMINAL TO PROCEED", 1.5), layer=1)
+        all_sprites.add(LcarsText(colours.BLUE, (360, -1), "TOUCH SCREEN TO PROCEED", 1.5), layer=1)
         all_sprites.add(LcarsGifImage("assets/animated/st_logo.gif", (103, 369), 50), layer=1)
 
         # sounds
