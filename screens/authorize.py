@@ -56,8 +56,8 @@ class ScreenAuthorize(LcarsScreen):
                 # Ran out of button presses
                 if (self.correct == 4):
                     self.sound_granted.play()
-                    from screens.emerg import ScreenEmerg
-                    self.loadScreen(ScreenEmerg())
+                    from screens.ops import ScreenOps
+                    self.loadScreen(ScreenOps())
                 else:
                     self.sound_deny2.play()
                     self.sound_denied.play()
