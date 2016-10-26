@@ -31,7 +31,7 @@ class ScreenMain(LcarsScreen):
         all_sprites.add(LcarsButton(colours.PURPLE, "nav", (200, 15), "NETWORK", self.load_network), layer=4)
         all_sprites.add(LcarsButton(colours.BLUE, "nav", (255, 15), "POWER", self.load_power), layer=4)
         all_sprites.add(LcarsButton(colours.ORANGE, "nav", (310, 15), "OPERATIONS", self.load_auth), layer=4)
-        all_sprites.add(LcarsButton(colours.PEACH, "nav", (365, 15), "", self.load_template), layer=4)
+        all_sprites.add(LcarsButton(colours.PEACH, "nav", (365, 15), "TEST UPDATE", self.load_template), layer=4)
 
         # Load data from file
         returnpayload = read_txt("/tmp/alerts.txt")
