@@ -30,11 +30,11 @@ class ScreenMain(LcarsScreen):
         all_sprites.add(LcarsButton(colours.BEIGE, "nav", (145, 15), "ENVIRO", self.load_enviro), layer=4)
         all_sprites.add(LcarsButton(colours.PURPLE, "nav", (200, 15), "NETWORK", self.load_network), layer=4)
         all_sprites.add(LcarsButton(colours.BLUE, "nav", (255, 15), "POWER", self.load_power), layer=4)
-        all_sprites.add(LcarsButton(colours.ORANGE, "nav", (310, 15), "EMERGENCY", self.load_auth), layer=4)
+        all_sprites.add(LcarsButton(colours.ORANGE, "nav", (310, 15), "OPERATIONS", self.load_auth), layer=4)
         all_sprites.add(LcarsButton(colours.PEACH, "nav", (365, 15), "", self.load_template), layer=4)
 
         # Load data from file
-        returnpayload = readtxt("/tmp/alerts.txt")
+        returnpayload = read_txt("/tmp/alerts.txt")
 
         all_sprites.add(LcarsText(colours.ORANGE, (137, 133), returnpayload[0], 1.8), layer=3)
 
@@ -77,9 +77,13 @@ class ScreenMain(LcarsScreen):
         from screens.template import ScreenTemplate
         self.loadScreen(ScreenTemplate())
 
+#    def load_auth(self, item, event, clock):
+#        from screens.authorize import ScreenAuthorize
+#        self.loadScreen(ScreenAuthorize())
+
     def load_auth(self, item, event, clock):
-        from screens.authorize import ScreenAuthorize
-        self.loadScreen(ScreenAuthorize())
+        from screens.ops import ScreenOps
+        self.loadScreen(ScreenOps())
 
     def load_power(self, item, event, clock):
         from screens.power import ScreenPower
