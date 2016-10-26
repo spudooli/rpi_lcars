@@ -96,8 +96,9 @@ class ScreenOps(LcarsScreen):
         self.loadScreen(ScreenMain())
 
     def git_pull(self, item, event, clock):
-        if update_available() == False:
-            print("Can update")
+        subprocess.call(["git", "pull"])
+        # Force LCARS restart
+        sys.exit()
 
     def exit(self, item, event, clock):
         sys.exit()
