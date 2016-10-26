@@ -34,19 +34,19 @@ class ScreenNetwork(LcarsScreen):
         all_sprites.add(LcarsButton(colours.PEACH, "nav", (365, 15), "", self.nullfunction), layer=2)
 
         # Router heading
-        all_sprites.add(LcarsText(colours.ORANGE, (140, 174), "IP ADDRESS", 2), layer=3)
+        all_sprites.add(LcarsText(colours.ORANGE, (140, 175), "IP ADDRESS", 2), layer=3)
         all_sprites.add(LcarsText(colours.ORANGE, (140, 400), "STATUS", 2), layer=3)
         all_sprites.add(LcarsGifImage("assets/animated/fwscan.gif", (320, 556), 100), layer=3)
 
         # Load data from file
-        returnpayload = readcsv("/tmp/routers.txt")
+        returnpayload = read_csv("/tmp/routers.txt")
 
         # Loop through results
         index = 0
         ypos = 200
         while index < 4:
             currentstatus = get_ip_status(returnpayload, index)
-            all_sprites.add(LcarsText(colours.BLUE, (ypos, 174), currentstatus['ip'], 2), layer=3)
+            all_sprites.add(LcarsText(colours.BLUE, (ypos, 175), currentstatus['ip'], 2), layer=3)
 
             # Change color based on status
             if currentstatus['status'] == "ONLINE":
@@ -80,7 +80,7 @@ class ScreenNetwork(LcarsScreen):
         if event.type == pygame.MOUSEBUTTONUP:
             return False
 
-# Button functions
+    # Button functions
     def display_routers(self, item, event, clock):
         self.show_routers()
 
