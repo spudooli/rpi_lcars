@@ -41,7 +41,7 @@ def get_load():
     uptime = ps.stdout.read()
     ps.stdout.close()
     ps.wait()
-    return uptime.rstrip()[54:];
+    return uptime.rstrip()[-16:];
 
 # Check version against GitHub
 def update_available():
