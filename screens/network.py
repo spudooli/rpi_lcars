@@ -39,7 +39,7 @@ class ScreenNetwork(LcarsScreen):
         all_sprites.add(LcarsGifImage("assets/animated/fwscan.gif", (320, 556), 100), layer=3)
 
         # Load data from file
-        returnpayload = read_csv("/tmp/routers.txt")
+        returnpayload = read_csv("/var/lib/lcars/routers")
 
         # Loop through results
         index = 0
