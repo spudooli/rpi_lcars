@@ -20,22 +20,19 @@ PINK = 204, 102, 153
 def randomcolor():
     # Generate random number between 0 and 7
     rand = randint(0,7)
-
     if rand == 0:
-        RANDCOLOR = ORANGE
+        return ORANGE;
     elif rand == 1:
-        RANDCOLOR = PURPLE
+        return PURPLE;
     elif rand == 2:
-        RANDCOLOR = GREY_BLUE
+        return GREY_BLUE;
     elif rand == 3:
-        RANDCOLOR = RED_BROWN
+        return RED_BROWN;
     elif rand == 4:
-        RANDCOLOR = BEIGE
+        return BEIGE;
     elif rand == 5:
-        RANDCOLOR = BLUE
+        return BLUE;
     elif rand == 6:
-        RANDCOLOR = PEACH
+        return PEACH;
     elif rand == 7:
-        RANDCOLOR = PINK
-
-    return RANDCOLOR;
+        return PINK;
