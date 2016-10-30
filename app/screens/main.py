@@ -3,6 +3,7 @@ import pygame
 from pygame.mixer import Sound
 
 from ui import colours
+from ui.colours import randomcolor
 from ui.widgets.background import LcarsBackgroundImage, LcarsImage
 from ui.widgets.gifimage import LcarsGifImage
 from ui.widgets.lcars_widgets import *
@@ -19,11 +20,11 @@ class ScreenMain(LcarsScreen):
                         layer=1)
         all_sprites.add(LcarsText(colours.ORANGE, (0, 135), "HOME AUTOMATION", 2),
                         layer=1)
-        all_sprites.add(LcarsBlockMedium(colours.RED_BROWN, (145, 16), "LIGHTS"),
+        all_sprites.add(LcarsBlockMedium(randomcolor(), (145, 16), "LIGHTS"),
                         layer=1)
-        all_sprites.add(LcarsBlockSmall(colours.ORANGE, (211, 16), "CAMERAS"),
+        all_sprites.add(LcarsBlockSmall(randomcolor(), (211, 16), "CAMERAS"),
                         layer=1)
-        all_sprites.add(LcarsBlockLarge(colours.BEIGE, (249, 16), "ENERGY"),
+        all_sprites.add(LcarsBlockLarge(randomcolor(), (249, 16), "ENERGY"),
                         layer=1)
         all_sprites.add(LcarsText(colours.BLACK, (444, 612), "192 168 0 3"),
                         layer=1)
@@ -47,11 +48,11 @@ class ScreenMain(LcarsScreen):
         # buttons        
         all_sprites.add(LcarsButton(colours.RED_BROWN, (6, 662), "LOGOUT", self.logoutHandler),
                         layer=4)
-        all_sprites.add(LcarsButton(colours.BEIGE, (107, 127), "SENSORS", self.sensorsHandler),
+        all_sprites.add(LcarsButton(randomcolor(), (107, 127), "SENSORS", self.sensorsHandler),
                         layer=4)
-        all_sprites.add(LcarsButton(colours.PURPLE, (107, 262), "GAUGES", self.gaugesHandler),
+        all_sprites.add(LcarsButton(randomcolor(), (107, 262), "GAUGES", self.gaugesHandler),
                         layer=4)
-        all_sprites.add(LcarsButton(colours.PEACH, (107, 398), "WEATHER", self.weatherHandler),
+        all_sprites.add(LcarsButton(randomcolor(), (107, 398), "WEATHER", self.weatherHandler),
                         layer=4)
 
         # gadgets        
