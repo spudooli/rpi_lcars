@@ -5,7 +5,7 @@ from pygame.mixer import Sound
 from ui import colours
 from ui.widgets.background import LcarsBackgroundImage, LcarsImage
 from ui.widgets.gifimage import LcarsGifImage
-from ui.widgets.lcars_widgets import LcarsText, LcarsButton
+from ui.widgets.lcars_widgets import *
 from ui.widgets.screen import LcarsScreen
 from ui.widgets.sprite import LcarsMoveToMouse
 
@@ -15,11 +15,17 @@ class ScreenMain(LcarsScreen):
                         layer=0)
         
         # panel text
-        all_sprites.add(LcarsText(colours.BLACK, (11, 52), "LCARS 105"),
+        all_sprites.add(LcarsText(colours.BLACK, (15, 44), "LCARS 105"),
                         layer=1)
         all_sprites.add(LcarsText(colours.ORANGE, (0, 135), "HOME AUTOMATION", 2),
                         layer=1)
-	all_sprites.add(LcarsText(colours.BLACK, (444, 612), "192 168 0 3"),
+        all_sprites.add(LcarsBlockMedium(colours.RED_BROWN, (145, 16), "LIGHTS"),
+                        layer=1)
+        all_sprites.add(LcarsBlockSmall(colours.ORANGE, (211, 16), "CAMERAS"),
+                        layer=1)
+        all_sprites.add(LcarsBlockLarge(colours.BEIGE, (249, 16), "ENERGY"),
+                        layer=1)
+        all_sprites.add(LcarsText(colours.BLACK, (444, 612), "192 168 0 3"),
                         layer=1)
 
         # info text
@@ -39,13 +45,13 @@ class ScreenMain(LcarsScreen):
         all_sprites.add(self.stardate, layer=1)
 
         # buttons        
-        all_sprites.add(LcarsButton(colours.RED_BROWN, "btn", (6, 662), "LOGOUT", self.logoutHandler),
+        all_sprites.add(LcarsButton(colours.RED_BROWN, (6, 662), "LOGOUT", self.logoutHandler),
                         layer=4)
-        all_sprites.add(LcarsButton(colours.BEIGE, "nav", (145, 15), "SENSORS", self.sensorsHandler),
+        all_sprites.add(LcarsButton(colours.BEIGE, (107, 127), "SENSORS", self.sensorsHandler),
                         layer=4)
-        all_sprites.add(LcarsButton(colours.PURPLE, "nav", (200, 15), "GAUGES", self.gaugesHandler),
+        all_sprites.add(LcarsButton(colours.PURPLE, (107, 262), "GAUGES", self.gaugesHandler),
                         layer=4)
-        all_sprites.add(LcarsButton(colours.PEACH, "nav", (255, 15), "WEATHER", self.weatherHandler),
+        all_sprites.add(LcarsButton(colours.PEACH, (107, 398), "WEATHER", self.weatherHandler),
                         layer=4)
 
         # gadgets        
@@ -74,8 +80,6 @@ class ScreenMain(LcarsScreen):
         LcarsScreen.update(self, screenSurface, fpsClock)
         
     def handleEvents(self, event, fpsClock):
-        LcarsScreen.handleEvents(self, event, fpsClock)
-        
         if event.type == pygame.MOUSEBUTTONDOWN:
             self.beep1.play()
 
@@ -106,7 +110,7 @@ class ScreenMain(LcarsScreen):
         self.weather.visible = True
     
     def logoutHandler(self, item, event, clock):
-        from screens.idle import ScreenIdle
-        self.loadScreen(ScreenIdle())
+        from screens.authorize import ScreenAuthorize
+        self.loadScreen(ScreenAuthorize())
     
     

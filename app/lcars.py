@@ -1,4 +1,4 @@
-from screens.idle import ScreenIdle
+from screens.authorize import ScreenAuthorize
 from ui.ui import UserInterface
 
 # global config
@@ -8,7 +8,7 @@ FPS = 60
 DEV_MODE = True
 
 if __name__ == "__main__":
-    firstScreen = ScreenIdle()
+    firstScreen = ScreenAuthorize()
     ui = UserInterface(firstScreen, RESOLUTION, UI_PLACEMENT_MODE, FPS, DEV_MODE)
 
     while (True):
