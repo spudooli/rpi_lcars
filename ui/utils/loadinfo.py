@@ -9,24 +9,6 @@ def read_txt(filename):
 
     return lines;
 
-# Return CSV pairs
-def read_csv(filename):
-    lines = []
-    with open(filename, mode='r') as infile:
-        for line in infile.readlines():
-            l,name = line.strip().split(',')
-            lines.append((l,name))
-
-    return lines;
-
-# Return a dictionary with ip/status for given list index
-def get_ip_status(sourcelist, index):
-    ipstatus = {}
-    ipaddr = str(sourcelist[index])[2:13]
-    status = str(sourcelist[index])[18:-2]
-    ipstatus = {"ip": ipaddr, "status": status}
-    return ipstatus;
-
 # Return current uptime
 def get_uptime():
     ps = subprocess.Popen("uptime -p", shell=True, stdout=subprocess.PIPE)
