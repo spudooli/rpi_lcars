@@ -3,12 +3,13 @@ from datetime import datetime
 import pygame
 from pygame.mixer import Sound
 
+from ui.colours import randomcolor
+
 from ui import colours
 from ui.widgets.background import LcarsBackgroundImage, LcarsImage
 from ui.widgets.gifimage import LcarsGifImage
 from ui.widgets.lcars_widgets import LcarsText, LcarsButton
 from ui.widgets.screen import LcarsScreen
-from ui.widgets.sprite import LcarsMoveToMouse
 
 # Need to change class name to whatever screen is to be called
 class ScreenTemplate(LcarsScreen):
@@ -26,12 +27,12 @@ class ScreenTemplate(LcarsScreen):
         all_sprites.add(LcarsText(colours.ORANGE, (0, 135), "SECTION NAME", 2), layer=1)
 
         # Interfaces
-        all_sprites.add(LcarsButton(colours.RED_BROWN, "btn", (6, 662), "MAIN", self.logoutHandler), layer=2)
-        all_sprites.add(LcarsButton(colours.BEIGE, "nav", (145, 15), "BUTTON 1", self.nullfunction), layer=2)
-        all_sprites.add(LcarsButton(colours.PURPLE, "nav", (200, 15), "BUTTON 2", self.nullfunction), layer=2)
-        all_sprites.add(LcarsButton(colours.BLUE, "nav", (255, 15), "BUTTON 3", self.nullfunction), layer=2)
-        all_sprites.add(LcarsButton(colours.ORANGE, "nav", (310, 15), "BUTTON 4", self.nullfunction), layer=2)
-        all_sprites.add(LcarsButton(colours.PEACH, "nav", (365, 15), "", self.nullfunction), layer=2)
+        all_sprites.add(LcarsButton(colours.RED_BROWN, "btn", (6, 660), "MAIN", self.logoutHandler), layer=2)
+        all_sprites.add(LcarsButton(randomcolor(), "nav", (145, 15), "BUTTON 1", self.nullfunction), layer=2)
+        all_sprites.add(LcarsButton(randomcolor(), "nav", (200, 15), "BUTTON 2", self.nullfunction), layer=2)
+        all_sprites.add(LcarsButton(randomcolor(), "nav", (255, 15), "BUTTON 3", self.nullfunction), layer=2)
+        all_sprites.add(LcarsButton(randomcolor(), "nav", (310, 15), "BUTTON 4", self.nullfunction), layer=2)
+        all_sprites.add(LcarsButton(randomcolor(), "nav", (365, 15), "", self.nullfunction), layer=2)
 
         # Info text
         all_sprites.add(LcarsText(colours.BLUE, (244, 174), "TEXT GOES HERE", 1.5), layer=3)

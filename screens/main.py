@@ -3,6 +3,7 @@ import pygame
 from pygame.mixer import Sound
 
 from ui.utils.loadinfo import *
+from ui.colours import randomcolor
 
 from ui import colours
 from ui.widgets.background import LcarsBackgroundImage, LcarsImage
@@ -26,28 +27,27 @@ class ScreenMain(LcarsScreen):
         all_sprites.add(LcarsText(colours.ORANGE, (0, 135), "MAIN MENU", 2), layer=1)
 
         # Buttons
-        all_sprites.add(LcarsButton(colours.RED_BROWN, "btn", (6, 662), "LOGOUT", self.load_idle), layer=4)
-        all_sprites.add(LcarsButton(colours.BEIGE, "nav", (145, 15), "ENVIRO", self.load_enviro), layer=4)
-        all_sprites.add(LcarsButton(colours.PURPLE, "nav", (200, 15), "NETWORK", self.load_network), layer=4)
-        all_sprites.add(LcarsButton(colours.BLUE, "nav", (255, 15), "POWER", self.load_power), layer=4)
-        all_sprites.add(LcarsButton(colours.ORANGE, "nav", (310, 15), "OPERATIONS", self.load_auth), layer=4)
-        all_sprites.add(LcarsButton(colours.PEACH, "nav", (365, 15), "", self.load_template), layer=4)
+        all_sprites.add(LcarsButton(colours.RED_BROWN, "btn", (6, 660), "LOGOUT", self.load_idle), layer=4)
+        all_sprites.add(LcarsButton(randomcolor(), "nav", (145, 15), "ENVIRO", self.load_enviro), layer=4)
+        all_sprites.add(LcarsButton(randomcolor(), "nav", (200, 15), "NETWORK", self.load_network), layer=4)
+        all_sprites.add(LcarsButton(randomcolor(), "nav", (255, 15), "POWER", self.load_power), layer=4)
+        all_sprites.add(LcarsButton(randomcolor(), "nav", (310, 15), "OPERATIONS", self.load_auth), layer=4)
+        all_sprites.add(LcarsButton(randomcolor(), "nav", (365, 15), "", self.load_template), layer=4)
 
         # Load data from file
         returnpayload = read_txt("/var/lib/lcars/alert")
 
+        # First line in file is always going to be heading
         all_sprites.add(LcarsText(colours.ORANGE, (137, 133), returnpayload[0], 1.8), layer=3)
 
-        # Loop through results
+        # Loop through results starting at second element
         index = 1
         ypos = 190
-        while index < 5:
+        while index < len(returnpayload):
             all_sprites.add(LcarsText(colours.BLUE, (ypos, 150), returnpayload[index], 1.5), layer=3)
             # Bump index and vertical pos
             index += 1
             ypos += 50
-
-        self.info_text = all_sprites.get_sprites_from_layer(3)
 
         # Rotating Deep Space 9
         all_sprites.add(LcarsGifImage("assets/animated/ds9_3d.gif", (148, 475), 100), layer=1)

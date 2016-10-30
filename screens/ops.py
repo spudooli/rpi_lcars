@@ -4,6 +4,7 @@ import pygame
 from pygame.mixer import Sound
 
 from ui.utils.loadinfo import *
+from ui.colours import randomcolor
 import sys
 
 from ui import colours
@@ -28,12 +29,12 @@ class ScreenOps(LcarsScreen):
         all_sprites.add(LcarsText(colours.ORANGE, (0, 135), "OPERATIONS", 2), layer=1)
 
         # Interfaces
-        all_sprites.add(LcarsButton(colours.RED_BROWN, "btn", (6, 662), "MAIN", self.logoutHandler), layer=2)
-        all_sprites.add(LcarsButton(colours.BEIGE, "nav", (145, 15), "TERMINAL", self.display_hw), layer=2)
-        all_sprites.add(LcarsButton(colours.PURPLE, "nav", (200, 15), "LCARS UI", self.display_lcars), layer=2)
-        all_sprites.add(LcarsButton(colours.BLUE, "nav", (255, 15), "BUTTON 3", self.nullfunction), layer=2)
-        all_sprites.add(LcarsButton(colours.ORANGE, "nav", (310, 15), "BUTTON 4", self.nullfunction), layer=2)
-        all_sprites.add(LcarsButton(colours.PEACH, "nav", (365, 15), "", self.nullfunction), layer=2)
+        all_sprites.add(LcarsButton(colours.RED_BROWN, "btn", (6, 660), "MAIN", self.logoutHandler), layer=2)
+        all_sprites.add(LcarsButton(randomcolor(), "nav", (145, 15), "TERMINAL", self.display_hw), layer=2)
+        all_sprites.add(LcarsButton(randomcolor(), "nav", (200, 15), "LCARS UI", self.display_lcars), layer=2)
+        all_sprites.add(LcarsButton(randomcolor(), "nav", (255, 15), "BUTTON 3", self.nullfunction), layer=2)
+        all_sprites.add(LcarsButton(randomcolor(), "nav", (310, 15), "BUTTON 4", self.nullfunction), layer=2)
+        all_sprites.add(LcarsButton(randomcolor(), "nav", (365, 15), "", self.nullfunction), layer=2)
 
         # Local hardware
         all_sprites.add(LcarsText(colours.ORANGE, (140, 175), "UPTIME", 2), layer=3)
