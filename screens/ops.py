@@ -41,7 +41,8 @@ class ScreenOps(LcarsScreen):
         all_sprites.add(LcarsText(colours.BLUE, (200, 175), get_uptime(), 2), layer=3)
         all_sprites.add(LcarsText(colours.ORANGE, (260, 175), "SYSTEM LOAD AVG", 2), layer=3)
         all_sprites.add(LcarsText(colours.BLUE, (320, 175), get_load(), 2), layer=3)
-        all_sprites.add(LcarsButton(colours.RED, "btn", (380, 175), "REBOOT", self.reboot), layer=3)
+        all_sprites.add(LcarsButton(colours.ORANGE, "btn", (380, 175), "REBOOT", self.reboot), layer=3)
+        all_sprites.add(LcarsButton(colours.RED, "btn", (380, 350), "SHUTDOWN", self.shutdown), layer=3)
         self.hw = all_sprites.get_sprites_from_layer(3)
 
         # LCARS UI
@@ -98,6 +99,9 @@ class ScreenOps(LcarsScreen):
 
     def reboot(self, item, event, clock):
         subprocess.call(["reboot"])
+
+    def shutdown(self, item, event, clock):
+        subprocess.call(["shutdown"])
 
     def git_pull(self, item, event, clock):
         subprocess.call(["git", "pull"])
