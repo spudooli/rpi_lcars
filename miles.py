@@ -4,14 +4,17 @@
 import time
 import subprocess
 
+# Command to start LCARS
+LCARS_EXE = "./lcars.py"
+
 def checkLCARS():
     ps = subprocess.Popen("ps -ef | grep lcars.py | wc -l", shell=True, stdout=subprocess.PIPE)
     output = ps.stdout.read()
     ps.stdout.close()
     ps.wait()
-    # Nasty hack here, if more than 2 results are returned one of them should be
+    # Nasty hack here, if multiple results are returned one of them should be
     # what we're actually looking for.
-    if output[0] == "3":
+    if output[0] >= "3":
         return 1
     else:
         return 0
@@ -47,7 +50,7 @@ def thirty():
 
 def sixty():
     print("1 Minute")
-    subprocess.Popen(["./scripts/ipscan.py", "services"])
+    subprocess.Popen(["./scripts/ipscan.py", "sites"])
 
 # Main loop
 print("Starting...")
@@ -74,7 +77,7 @@ while True:
         print("LCARS Online")
     else:
         print("Launching LCARS")
-        subprocess.Popen(["./lcars.py"])
+        subprocess.Popen([LCARS_EXE])
 
     # Tick, wait for 2 seconds
     tick += 1
