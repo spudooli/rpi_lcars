@@ -21,11 +21,8 @@ checkgroup()
 installdeps()
 {
   # Install the required packages
-  echo -n "Updating package list..."
-  apt-get update > /dev/null
-  echo "OK"
   echo "Checking dependencies..."
-  apt-get install python python-pygame python-pil
+  apt-get install python python-pygame python-pil xinit
 }
 
 createdir()
