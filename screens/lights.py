@@ -57,6 +57,12 @@ class ScreenLights(LcarsScreen):
         all_sprites.add(LcarsText(colours.ORANGE, (200, 175), "Front Door", 2), layer=4)
         all_sprites.add(LcarsButton(colours.ORANGE, "btn", (200, 460), "ON", self.frontdoorlightson), layer=4)
         all_sprites.add(LcarsButton(colours.RED_BROWN, "btn", (200, 610), "OFF", self.frontdoorlightsoff), layer=4)
+        all_sprites.add(LcarsText(colours.ORANGE, (260, 175), "Verandah", 2), layer=4)
+        all_sprites.add(LcarsButton(colours.ORANGE, "btn", (260, 460), "ON", self.verandahlightson), layer=4)
+        all_sprites.add(LcarsButton(colours.RED_BROWN, "btn", (260, 610), "OFF", self.verandahlightsoff), layer=4)
+        all_sprites.add(LcarsText(colours.ORANGE, (320, 175), "Garden", 2), layer=4)
+        all_sprites.add(LcarsButton(colours.ORANGE, "btn", (320, 460), "ON", self.gardenlightson), layer=4)
+        all_sprites.add(LcarsButton(colours.RED_BROWN, "btn", (320, 610), "OFF", self.gardenlightsoff), layer=4)
 
         self.outside = all_sprites.get_sprites_from_layer(4)
         self.toggle_sprites(self.outside, False)
@@ -130,6 +136,18 @@ class ScreenLights(LcarsScreen):
     
     def frontdoorlightsoff(self, item, event, clock):
         subprocess.call(["ssh dave@192.168.1.2 'bash /var/www/scripts/lights.sh frontdoorlightoff"])
+    
+    def verandahlightson(self, item, event, clock):
+        subprocess.call(["ssh dave@192.168.1.2 'bash /var/www/scripts/lights.sh verandahlightson"])
+    
+    def verandahlightsoff(self, item, event, clock):
+        subprocess.call(["ssh dave@192.168.1.2 'bash /var/www/scripts/lights.sh verandahlightsoff"])
+    
+    def gardenlightson(self, item, event, clock):
+        subprocess.call(["ssh dave@192.168.1.2 'bash /var/www/scripts/lights.sh gardenlightson"])
+    
+    def gardenlightsoff(self, item, event, clock):
+        subprocess.call(["ssh dave@192.168.1.2 'bash /var/www/scripts/lights.sh gardenlightsoff"])
 
     def git_pull(self, item, event, clock):
         subprocess.call(["git", "pull"])
