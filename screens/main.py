@@ -44,7 +44,7 @@ class ScreenMain(LcarsScreen):
         index = 1
         ypos = 190
         while index < len(returnpayload):
-            all_sprites.add(LcarsText(colours.BLUE, (ypos, 150), returnpayload[index], 1.5), layer=3)
+            all_sprites.add(LcarsText(colours.BLUE, (ypos, 150), returnpayload[index], 1.8), layer=3)
             # Bump index and vertical pos
             index += 1
             ypos += 50

@@ -11,7 +11,7 @@ wholehouse = po.read()
 wholehouse = wholehouse.split(",")[0]
 
 st = open(BASEDIR + "scripts/status.txt", "w")
-st.write("Status\n" + "Bank Balance: " + otherbalance + "\n Power: " + wholehouse + "kw/h")
+st.write("Status\n" + "Bank Balance: " + otherbalance + "\nPower: " + wholehouse + "kw/h")
 st.close
 
 
