@@ -3,7 +3,7 @@ from pygame.locals import *
 
 class UserInterface:
     def __init__(self, screen, resolution=(800,480), 
-                 ui_placement_mode=False, fps=60, dev_mode=False,
+                 ui_placement_mode=False, fps=25, dev_mode=False,
                  audio=(22050, -8, 1, 1024)):
         # init system
         pygame.mixer.init(audio[0], audio[1], audio[2], audio[3])
