@@ -22,7 +22,7 @@ installdeps()
 {
   # Install the required packages
   echo "Checking dependencies..."
-  apt-get install python python-pygame python-pil xinit
+  apt-get install python python-pygame python-pil
 }
 
 createdir()

@@ -35,7 +35,7 @@ class ScreenMain(LcarsScreen):
         all_sprites.add(LcarsButton(randomcolor(), "nav", (365, 15), "", self.load_template), layer=4)
 
         # Load data from file
-        returnpayload = read_txt("/var/lib/lcars/alert")
+        returnpayload = read_txt("/tmp/alert")
 
         # First line in file is always going to be heading
         all_sprites.add(LcarsText(colours.ORANGE, (137, 133), returnpayload[0], 1.8), layer=3)

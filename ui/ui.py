@@ -13,7 +13,7 @@ class UserInterface:
         self.screenSurface = pygame.display.set_mode(resolution) #, pygame.FULLSCREEN)
         self.fpsClock = pygame.time.Clock()
         self.fps = fps
-        pygame.display.set_caption("LCARS")
+        pygame.display.set_caption("Spudooli House Control")
         if not dev_mode: pygame.mouse.set_visible(False)
         
         # set up screen elements
