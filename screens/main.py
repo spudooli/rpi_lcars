@@ -24,13 +24,13 @@ class ScreenMain(LcarsScreen):
 
         # Static text
         all_sprites.add(LcarsText(colours.BLACK, (8, 40), "SPUDOOLI", 1.2), layer=1)
-        all_sprites.add(LcarsText(colours.ORANGE, (0, 135), "", 2), layer=1)
+        all_sprites.add(LcarsText(colours.ORANGE, (0, 135), "SENSORS, 2), layer=1)
 
         # Buttons
         all_sprites.add(LcarsButton(colours.RED_BROWN, "btn", (6, 660), "LOGOUT", self.load_idle), layer=4)
         all_sprites.add(LcarsButton(randomcolor(), "nav", (145, 15), "LIGHTS", self.load_lights), layer=4)
         all_sprites.add(LcarsButton(randomcolor(), "nav", (200, 15), "WEATHER", self.load_weather), layer=4)
-        all_sprites.add(LcarsButton(randomcolor(), "nav", (255, 15), "SENSORS", self.load_power), layer=4)
+        all_sprites.add(LcarsButton(randomcolor(), "nav", (255, 15), "SENSORS", self.load_sensors), layer=4)
         all_sprites.add(LcarsButton(randomcolor(), "nav", (310, 15), "OPERATIONS", self.load_auth), layer=4)
         all_sprites.add(LcarsButton(randomcolor(), "nav", (365, 15), "NETWORK", self.load_network), layer=4)
 
@@ -85,9 +85,9 @@ class ScreenMain(LcarsScreen):
         from screens.ops import ScreenOps
         self.loadScreen(ScreenOps())
 
-    def load_power(self, item, event, clock):
-        from screens.power import ScreenPower
-        self.loadScreen(ScreenPower())
+    def load_sensors(self, item, event, clock):
+        from screens.sensors import ScreenSensors
+        self.loadScreen(ScreenSensors())
 
     def load_idle(self, item, event, clock):
         from screens.idle import ScreenIdle
