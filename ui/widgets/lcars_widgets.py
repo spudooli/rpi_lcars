@@ -17,8 +17,8 @@ class LcarsButton(LcarsWidget):
             image = pygame.image.load("assets/button.png").convert()
 
         size = (image.get_rect().width, image.get_rect().height)
-        font = Font("assets/swiss911.ttf", 26)
-        textImage = font.render(text, True, colours.BLACK)
+        font = Font("assets/swiss911.ttf", 24)
+        textImage = font.render(text, False, colours.BLACK)
 
         # Change text position
         if (shape == "nav"):
