@@ -38,11 +38,11 @@ class ScreenLights(LcarsScreen):
 
         # Local hardware
         all_sprites.add(LcarsText(colours.ORANGE, (140, 175), "ALL LIGHTS", 2), layer=3)
-        all_sprites.add(LcarsButton(colours.RED, "btn", (143, 360), "ON", self.alllightson), layer=3)
-        all_sprites.add(LcarsButton(colours.RED, "btn", (143, 530), "OFF", self.alllightsoff), layer=3)
-        all_sprites.add(LcarsText(colours.BLUE, (200, 175), get_uptime(), 2), layer=3)
-        all_sprites.add(LcarsText(colours.ORANGE, (260, 175), "SYSTEM LOAD AVG", 2), layer=3)
-        all_sprites.add(LcarsText(colours.BLUE, (320, 175), get_load(), 2), layer=3)
+        all_sprites.add(LcarsButton(colours.ORANGE, "btn", (143, 360), "ON", self.alllightson), layer=3)
+        all_sprites.add(LcarsButton(colours.RED_BROWN, "btn", (143, 530), "OFF", self.alllightsoff), layer=3)
+        all_sprites.add(LcarsText(colours.ORANGE, (200, 175), "OUTSIDE LIGHTS", 2), layer=3)
+        all_sprites.add(LcarsButton(colours.ORANGE, "btn", (200, 360), "ON", self.outsidelightson), layer=3)
+        all_sprites.add(LcarsButton(colours.RED_BROWN, "btn", (200, 530), "OFF", self.outsidelightsoff), layer=3)
         all_sprites.add(LcarsButton(colours.ORANGE, "btn", (380, 175), "REBOOT", self.reboot), layer=3)
         all_sprites.add(LcarsButton(colours.RED, "btn", (380, 350), "SHUTDOWN", self.shutdown), layer=3)
         self.hw = all_sprites.get_sprites_from_layer(3)
@@ -109,6 +109,12 @@ class ScreenLights(LcarsScreen):
         subprocess.call(["shutdown"])
     
     def alllightsoff(self, item, event, clock):
+        subprocess.call(["shutdown"])
+
+    def outsidelightson(self, item, event, clock):
+        subprocess.call(["shutdown"])
+    
+    def outsidelightsoff(self, item, event, clock):
         subprocess.call(["shutdown"])
 
     def git_pull(self, item, event, clock):
