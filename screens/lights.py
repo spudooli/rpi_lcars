@@ -31,15 +31,15 @@ class ScreenLights(LcarsScreen):
         # Interfaces
         all_sprites.add(LcarsButton(colours.RED_BROWN, "btn", (6, 660), "MAIN", self.logoutHandler), layer=2)
         all_sprites.add(LcarsButton(randomcolor(), "nav", (145, 15), "ALL Lights", self.display_hw), layer=2)
-        all_sprites.add(LcarsButton(randomcolor(), "nav", (200, 15), "OUTSIDE", self.display_lcars), layer=2)
+        all_sprites.add(LcarsButton(randomcolor(), "nav", (200, 15), "OUTSIDE", self.display_outside), layer=2)
         all_sprites.add(LcarsButton(randomcolor(), "nav", (255, 15), "BEDROOM", self.nullfunction), layer=2)
         all_sprites.add(LcarsButton(randomcolor(), "nav", (310, 15), "LIVING ROOM", self.nullfunction), layer=2)
         all_sprites.add(LcarsButton(randomcolor(), "nav", (365, 15), "", self.nullfunction), layer=2)
 
         # Local hardware
         all_sprites.add(LcarsText(colours.ORANGE, (140, 175), "All Lights", 2), layer=3)
-        all_sprites.add(LcarsButton(colours.ORANGE, "btn", (143, 460), "ON", self.alllightson), layer=3)
-        all_sprites.add(LcarsButton(colours.RED_BROWN, "btn", (143, 610), "OFF", self.alllightsoff), layer=3)
+        all_sprites.add(LcarsButton(colours.ORANGE, "btn", (140, 460), "ON", self.alllightson), layer=3)
+        all_sprites.add(LcarsButton(colours.RED_BROWN, "btn", (140, 610), "OFF", self.alllightsoff), layer=3)
         all_sprites.add(LcarsText(colours.ORANGE, (200, 175), "Outside", 2), layer=3)
         all_sprites.add(LcarsButton(colours.ORANGE, "btn", (200, 460), "ON", self.outsidelightson), layer=3)
         all_sprites.add(LcarsButton(colours.RED_BROWN, "btn", (200, 610), "OFF", self.outsidelightsoff), layer=3)
@@ -50,16 +50,16 @@ class ScreenLights(LcarsScreen):
         self.hw = all_sprites.get_sprites_from_layer(3)
 
         # LCARS UI
-        # Check for update
-        if update_available() == False:
-            all_sprites.add(LcarsText(colours.ORANGE, (140, 175), "LATEST VERSION INSTALLED", 2), layer=4)
-        elif update_available() == True:
-            all_sprites.add(LcarsText(colours.ORANGE, (140, 175), "UPDATE AVAILABLE", 2), layer=4)
-            all_sprites.add(LcarsButton(colours.BLUE, "btn", (200, 175), "UPDATE LCARS", self.git_pull), layer=4)
+        # Outside sub-menu
+        all_sprites.add(LcarsText(colours.ORANGE, (140, 175), "Outside", 2), layer=4)
+        all_sprites.add(LcarsButton(colours.ORANGE, "btn", (140, 460), "ON", self.outsidelightson), layer=4)
+        all_sprites.add(LcarsButton(colours.RED_BROWN, "btn", (140, 610), "OFF", self.outsidelightsoff), layer=4)
+        all_sprites.add(LcarsText(colours.ORANGE, (200, 175), "Front Door", 2), layer=4)
+        all_sprites.add(LcarsButton(colours.ORANGE, "btn", (200, 460), "ON", self.frontdoorlightson), layer=4)
+        all_sprites.add(LcarsButton(colours.RED_BROWN, "btn", (200, 610), "OFF", self.frontdoorlightsoff), layer=4)
 
-        all_sprites.add(LcarsButton(colours.ORANGE, "btn", (260, 175), "RESTART LCARS", self.exit), layer=4)
-        self.lcars = all_sprites.get_sprites_from_layer(4)
-        self.toggle_sprites(self.lcars, False)
+        self.outside = all_sprites.get_sprites_from_layer(4)
+        self.toggle_sprites(self.outside, False)
 
 
         # SFX
@@ -84,11 +84,11 @@ class ScreenLights(LcarsScreen):
     # Button functions
     def display_hw(self, item, event, clock):
         self.toggle_sprites(self.hw, True)
-        self.toggle_sprites(self.lcars, False)
+        self.toggle_sprites(self.outside, False)
 
-    def display_lcars(self, item, event, clock):
+    def display_outside(self, item, event, clock):
         self.toggle_sprites(self.hw, False)
-        self.toggle_sprites(self.lcars, True)
+        self.toggle_sprites(self.outside, True)
 
     def toggle_sprites(self, object, status):
         for sprite in object:
@@ -124,6 +124,12 @@ class ScreenLights(LcarsScreen):
     
     def livingroomlightsoff(self, item, event, clock):
         subprocess.call(["ssh dave@192.168.1.2 'bash /var/www/scripts/lights.sh outsidelightson"])
+    
+    def frontdoorlightson(self, item, event, clock):
+        subprocess.call(["ssh dave@192.168.1.2 'bash /var/www/scripts/lights.sh frontdoorlighton"])
+    
+    def frontdoorlightsoff(self, item, event, clock):
+        subprocess.call(["ssh dave@192.168.1.2 'bash /var/www/scripts/lights.sh frontdoorlightoff"])
 
     def git_pull(self, item, event, clock):
         subprocess.call(["git", "pull"])
