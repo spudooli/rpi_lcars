@@ -98,7 +98,7 @@ class ScreenMain(LcarsScreen):
         self.loadScreen(ScreenNetwork())
 
     def load_weather(self, item, event, clock):
-        from screens.network import ScreenNetwork
+        from screens.weather import ScreenWeather
         self.loadScreen(ScreenWeather())
 
     def load_enviro(self, item, event, clock):
