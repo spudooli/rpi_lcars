@@ -15,7 +15,7 @@ def get_uptime():
     uptime = ps.stdout.read()
     ps.stdout.close()
     ps.wait()
-    return uptime.rstrip()[3:];
+    return uptime.rstrip()[3:]
 
 # Return system load
 def get_load():
@@ -23,7 +23,7 @@ def get_load():
     uptime = ps.stdout.read()
     ps.stdout.close()
     ps.wait()
-    return uptime.rstrip()[-16:];
+    return uptime.rstrip()[-16:]
 
 # Check version against GitHub
 def update_available():
@@ -33,6 +33,12 @@ def update_available():
     ps.wait()
     # Return value
     if gitstatus[0] == "0":
-        return 0;
+        return 0
     elif gitstatus[0] == "1":
-        return 1;
+        return 1
+
+#Get the balance
+def get_balance();
+      fr = open("/home/pi/rpi_lcars/scripts/otherbalance.txt", "r")
+      otherbalance = fr.read()
+      return otherbalance
