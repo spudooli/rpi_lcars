@@ -6,7 +6,7 @@ from ui.ui import UserInterface
 # global config
 UI_PLACEMENT_MODE = True
 RESOLUTION = (800, 480)
-FPS = 60
+FPS = 25
 DEV_MODE = True
 
 if __name__ == "__main__":
