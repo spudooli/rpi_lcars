@@ -28,11 +28,11 @@ class ScreenMain(LcarsScreen):
 
         # Buttons
         all_sprites.add(LcarsButton(colours.RED_BROWN, "btn", (6, 660), "LOGOUT", self.load_idle), layer=4)
-        all_sprites.add(LcarsButton(randomcolor(), "nav", (145, 15), "LIGHTS", self.load_enviro), layer=4)
-        all_sprites.add(LcarsButton(randomcolor(), "nav", (200, 15), "NETWORK", self.load_network), layer=4)
+        all_sprites.add(LcarsButton(randomcolor(), "nav", (145, 15), "LIGHTS", self.load_lights), layer=4)
+        all_sprites.add(LcarsButton(randomcolor(), "nav", (200, 15), "WEATHER", self.load_weather), layer=4)
         all_sprites.add(LcarsButton(randomcolor(), "nav", (255, 15), "SENSORS", self.load_power), layer=4)
         all_sprites.add(LcarsButton(randomcolor(), "nav", (310, 15), "OPERATIONS", self.load_auth), layer=4)
-        all_sprites.add(LcarsButton(randomcolor(), "nav", (365, 15), "WEATHER", self.load_weather), layer=4)
+        all_sprites.add(LcarsButton(randomcolor(), "nav", (365, 15), "NETWORK", self.load_network), layer=4)
 
         # Load data from file
         returnpayload = read_txt("/home/pi/rpi_lcars/scripts/status.txt")
@@ -101,6 +101,6 @@ class ScreenMain(LcarsScreen):
         from screens.weather import ScreenWeather
         self.loadScreen(ScreenWeather())
 
-    def load_enviro(self, item, event, clock):
-        from screens.enviro import ScreenEnviro
-        self.loadScreen(ScreenEnviro())
+    def load_lights(self, item, event, clock):
+        from screens.lights import ScreenLights
+        self.loadScreen(ScreenLights())
