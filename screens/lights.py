@@ -32,7 +32,7 @@ class ScreenLights(LcarsScreen):
         all_sprites.add(LcarsButton(colours.RED_BROWN, "btn", (6, 660), "MAIN", self.logoutHandler), layer=2)
         all_sprites.add(LcarsButton(randomcolor(), "nav", (145, 15), "ALL Lights", self.display_hw), layer=2)
         all_sprites.add(LcarsButton(randomcolor(), "nav", (200, 15), "OUTSIDE", self.display_outside), layer=2)
-        all_sprites.add(LcarsButton(randomcolor(), "nav", (255, 15), "BEDROOM", self.nullfunction), layer=2)
+        all_sprites.add(LcarsButton(randomcolor(), "nav", (255, 15), "BEDROOM", self.display_bedroom), layer=2)
         all_sprites.add(LcarsButton(randomcolor(), "nav", (310, 15), "LIVING ROOM", self.nullfunction), layer=2)
         all_sprites.add(LcarsButton(randomcolor(), "nav", (365, 15), "", self.nullfunction), layer=2)
 
