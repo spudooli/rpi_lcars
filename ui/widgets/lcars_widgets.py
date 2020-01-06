@@ -40,13 +40,13 @@ class LcarsButton(LcarsWidget):
     def handleEvent(self, event, clock):
         handled = False
 
-        if (event.type == MOUSEBUTTONDOWN and self.rect.collidepoint(event.pos)):
+        if (event.type == MOUSEBUTTONDOWN and self.rect.collidepoint(event.pos) and self.visible == True):
             self.applyColour(colours.WHITE)
             self.highlighted = True
             self.beep.play()
             handled = True
 
-        if (event.type == MOUSEBUTTONUP and self.highlighted):
+        if (event.type == MOUSEBUTTONUP and self.highlighted and self.visible == True):
             self.applyColour(self.colour)
             if self.handler:
                 self.handler(self, event, clock)
