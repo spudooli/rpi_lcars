@@ -36,15 +36,6 @@ class ScreenWeather(LcarsScreen):
         all_sprites.add(LcarsButton(randomcolor(), "nav", (310, 15), "", self.nullfunction), layer=2)
         all_sprites.add(LcarsButton(randomcolor(), "nav", (365, 15), "", self.nullfunction), layer=2)
 
-        # Local hardware
-        #all_sprites.add(LcarsText(colours.ORANGE, (140, 175), "UPTIME", 2), layer=3)
-        #all_sprites.add(LcarsText(colours.BLUE, (200, 175), get_uptime(), 2), layer=3)
-        #all_sprites.add(LcarsText(colours.ORANGE, (260, 175), "SYSTEM LOAD AVG", 2), layer=3)
-        #all_sprites.add(LcarsText(colours.BLUE, (320, 175), get_load(), 2), layer=3)
-        #all_sprites.add(LcarsButton(colours.ORANGE, "btn", (380, 175), "REBOOT", self.reboot), layer=3)
-        #all_sprites.add(LcarsButton(colours.RED, "btn", (380, 350), "SHUTDOWN", self.shutdown), layer=3)
-        #self.hw = all_sprites.get_sprites_from_layer(3)
-
         # Load data from file
         returnpayload = read_txt("/home/pi/rpi_lcars/scripts/weather.txt")
 
@@ -55,23 +46,10 @@ class ScreenWeather(LcarsScreen):
         index = 1
         ypos = 190
         while index < len(returnpayload):
-            all_sprites.add(LcarsText(colours.BLUE, (ypos, 150), returnpayload[index], 1), layer=3)
+            all_sprites.add(LcarsText(colours.BLUE, (ypos, 150), returnpayload[index], 1.5), layer=3)
             # Bump index and vertical pos
             index += 1
             ypos += 50
-
-        # LCARS UI
-        # Check for update
-        ##if update_available() == False:
-            ##all_sprites.add(LcarsText(colours.ORANGE, (140, 175), "LATEST VERSION INSTALLED", 2), layer=4)
-        ##elif update_available() == True:
-            ##all_sprites.add(LcarsText(colours.ORANGE, (140, 175), "UPDATE AVAILABLE", 2), layer=4)
-            ##all_sprites.add(LcarsButton(colours.BLUE, "btn", (200, 175), "UPDATE LCARS", self.git_pull), layer=4)
-
-        #all_sprites.add(LcarsButton(colours.ORANGE, "btn", (260, 175), "RESTART LCARS", self.exit), layer=4)
-        #self.lcars = all_sprites.get_sprites_from_layer(4)
-        #self.toggle_sprites(self.lcars, False)
-
 
         # SFX
         self.beep1 = Sound("assets/audio/panel/201.wav")
