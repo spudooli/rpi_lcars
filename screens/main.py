@@ -35,7 +35,7 @@ class ScreenMain(LcarsScreen):
         all_sprites.add(LcarsButton(randomcolor(), "nav", (365, 15), "WEATHER", self.load_weather), layer=4)
 
         # Load data from file
-        returnpayload = read_txt("/tmp/alert")
+        returnpayload = read_txt("/home/pi/rpi_lcars/scripts/status.txt")
 
         # First line in file is always going to be heading
         all_sprites.add(LcarsText(colours.ORANGE, (137, 133), returnpayload[0], 1.8), layer=3)

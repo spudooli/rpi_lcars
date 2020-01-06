@@ -12,4 +12,4 @@ scp dave@192.168.1.2:/var/www/scripts/otherbalance.txt /home/pi/rpi_lcars/script
 #Weather
 
 
-
+python /home/pi/rpi_lcars/scripts/assemble-the-status-file.py
