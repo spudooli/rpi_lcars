@@ -18,7 +18,7 @@ class LcarsButton(LcarsWidget):
 
         size = (image.get_rect().width, image.get_rect().height)
         font = Font("assets/swiss911.ttf", 25)
-        textImage = font.render(text, False, colours.BLACK)
+        textImage = font.render(text, True, colours.BLACK)
 
         # Change text position
         if (shape == "nav"):
