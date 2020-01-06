@@ -38,11 +38,11 @@ class ScreenLights(LcarsScreen):
 
         # Local hardware
         all_sprites.add(LcarsText(colours.ORANGE, (140, 175), "ALL LIGHTS", 2), layer=3)
-        all_sprites.add(LcarsButton(colours.ORANGE, "btn", (143, 360), "ON", self.alllightson), layer=3)
-        all_sprites.add(LcarsButton(colours.RED_BROWN, "btn", (143, 530), "OFF", self.alllightsoff), layer=3)
+        all_sprites.add(LcarsButton(colours.ORANGE, "btn", (143, 400), "ON", self.alllightson), layer=3)
+        all_sprites.add(LcarsButton(colours.RED_BROWN, "btn", (143, 610), "OFF", self.alllightsoff), layer=3)
         all_sprites.add(LcarsText(colours.ORANGE, (200, 175), "OUTSIDE LIGHTS", 2), layer=3)
-        all_sprites.add(LcarsButton(colours.ORANGE, "btn", (200, 360), "ON", self.outsidelightson), layer=3)
-        all_sprites.add(LcarsButton(colours.RED_BROWN, "btn", (200, 530), "OFF", self.outsidelightsoff), layer=3)
+        all_sprites.add(LcarsButton(colours.ORANGE, "btn", (200, 400), "ON", self.outsidelightson), layer=3)
+        all_sprites.add(LcarsButton(colours.RED_BROWN, "btn", (200, 610), "OFF", self.outsidelightsoff), layer=3)
         all_sprites.add(LcarsButton(colours.ORANGE, "btn", (380, 175), "REBOOT", self.reboot), layer=3)
         all_sprites.add(LcarsButton(colours.RED, "btn", (380, 350), "SHUTDOWN", self.shutdown), layer=3)
         self.hw = all_sprites.get_sprites_from_layer(3)
