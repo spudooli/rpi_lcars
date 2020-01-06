@@ -17,7 +17,7 @@ class LcarsButton(LcarsWidget):
             image = pygame.image.load("assets/button.png").convert()
 
         size = (image.get_rect().width, image.get_rect().height)
-        font = Font("assets/arial.ttf", 25)
+        font = Font("assets/arial.ttf", 18)
         textImage = font.render(text, True, colours.BLACK)
 
         # Change text position
