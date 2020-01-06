@@ -80,7 +80,7 @@ class ScreenLights(LcarsScreen):
         #all_sprites.add(LcarsButton(colours.ORANGE, "btn", (320, 460), "ON", self.gardenlightson), layer=5)
         #all_sprites.add(LcarsButton(colours.RED_BROWN, "btn", (320, 610), "OFF", self.gardenlightsoff), layer=5)
 
-        self.outside = all_sprites.get_sprites_from_layer(5)
+        self.bedroom = all_sprites.get_sprites_from_layer(5)
         self.toggle_sprites(self.outside, False)
         self.toggle_sprites(self.bedroom, False)
 
