@@ -26,7 +26,7 @@ class ScreenSensors(LcarsScreen):
 
         # Static text
         all_sprites.add(LcarsText(colours.BLACK, (8, 40), "SPUDOOLI"), layer=1)
-        all_sprites.add(LcarsText(colours.ORANGE, (4, 135), "OPERATIONS", 2), layer=1)
+        all_sprites.add(LcarsText(colours.ORANGE, (4, 135), "SENSORS", 2), layer=1)
 
         # Interfaces
         all_sprites.add(LcarsButton(colours.RED_BROWN, "btn", (6, 660), "MAIN", self.logoutHandler), layer=2)
