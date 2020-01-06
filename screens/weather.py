@@ -25,37 +25,52 @@ class ScreenWeather(LcarsScreen):
         all_sprites.add(self.stardate, layer=1)
 
         # Static text
-        all_sprites.add(LcarsText(colours.BLACK, (8, 40), "SPUDOOLI"), layer=1)
+        all_sprites.add(LcarsText(colours.BLACK, (8, 40), "SPUDOOLI", 1.2), layer=1)
         all_sprites.add(LcarsText(colours.ORANGE, (0, 135), "WEATHER", 2), layer=1)
 
         # Interfaces
         all_sprites.add(LcarsButton(colours.RED_BROWN, "btn", (6, 660), "MAIN", self.logoutHandler), layer=2)
-        all_sprites.add(LcarsButton(randomcolor(), "nav", (145, 15), "TERMINAL", self.display_hw), layer=2)
-        all_sprites.add(LcarsButton(randomcolor(), "nav", (200, 15), "LCARS UI", self.display_lcars), layer=2)
-        all_sprites.add(LcarsButton(randomcolor(), "nav", (255, 15), "BUTTON 3", self.nullfunction), layer=2)
-        all_sprites.add(LcarsButton(randomcolor(), "nav", (310, 15), "BUTTON 4", self.nullfunction), layer=2)
+        all_sprites.add(LcarsButton(randomcolor(), "nav", (145, 15), "", self.display_hw), layer=2)
+        all_sprites.add(LcarsButton(randomcolor(), "nav", (200, 15), "", self.display_lcars), layer=2)
+        all_sprites.add(LcarsButton(randomcolor(), "nav", (255, 15), "", self.nullfunction), layer=2)
+        all_sprites.add(LcarsButton(randomcolor(), "nav", (310, 15), "", self.nullfunction), layer=2)
         all_sprites.add(LcarsButton(randomcolor(), "nav", (365, 15), "", self.nullfunction), layer=2)
 
         # Local hardware
-        all_sprites.add(LcarsText(colours.ORANGE, (140, 175), "UPTIME", 2), layer=3)
-        all_sprites.add(LcarsText(colours.BLUE, (200, 175), get_uptime(), 2), layer=3)
-        all_sprites.add(LcarsText(colours.ORANGE, (260, 175), "SYSTEM LOAD AVG", 2), layer=3)
-        all_sprites.add(LcarsText(colours.BLUE, (320, 175), get_load(), 2), layer=3)
-        all_sprites.add(LcarsButton(colours.ORANGE, "btn", (380, 175), "REBOOT", self.reboot), layer=3)
-        all_sprites.add(LcarsButton(colours.RED, "btn", (380, 350), "SHUTDOWN", self.shutdown), layer=3)
-        self.hw = all_sprites.get_sprites_from_layer(3)
+        #all_sprites.add(LcarsText(colours.ORANGE, (140, 175), "UPTIME", 2), layer=3)
+        #all_sprites.add(LcarsText(colours.BLUE, (200, 175), get_uptime(), 2), layer=3)
+        #all_sprites.add(LcarsText(colours.ORANGE, (260, 175), "SYSTEM LOAD AVG", 2), layer=3)
+        #all_sprites.add(LcarsText(colours.BLUE, (320, 175), get_load(), 2), layer=3)
+        #all_sprites.add(LcarsButton(colours.ORANGE, "btn", (380, 175), "REBOOT", self.reboot), layer=3)
+        #all_sprites.add(LcarsButton(colours.RED, "btn", (380, 350), "SHUTDOWN", self.shutdown), layer=3)
+        #self.hw = all_sprites.get_sprites_from_layer(3)
+
+        # Load data from file
+        returnpayload = read_txt("/home/pi/rpi_lcars/scripts/weather.txt")
+
+        # First line in file is always going to be heading
+        all_sprites.add(LcarsText(colours.ORANGE, (137, 133), returnpayload[0], 1.8), layer=3)
+
+        # Loop through results starting at second element
+        index = 1
+        ypos = 190
+        while index < len(returnpayload):
+            all_sprites.add(LcarsText(colours.BLUE, (ypos, 150), returnpayload[index], 1), layer=3)
+            # Bump index and vertical pos
+            index += 1
+            ypos += 50
 
         # LCARS UI
         # Check for update
-        if update_available() == False:
-            all_sprites.add(LcarsText(colours.ORANGE, (140, 175), "LATEST VERSION INSTALLED", 2), layer=4)
-        elif update_available() == True:
-            all_sprites.add(LcarsText(colours.ORANGE, (140, 175), "UPDATE AVAILABLE", 2), layer=4)
-            all_sprites.add(LcarsButton(colours.BLUE, "btn", (200, 175), "UPDATE LCARS", self.git_pull), layer=4)
+        ##if update_available() == False:
+            ##all_sprites.add(LcarsText(colours.ORANGE, (140, 175), "LATEST VERSION INSTALLED", 2), layer=4)
+        ##elif update_available() == True:
+            ##all_sprites.add(LcarsText(colours.ORANGE, (140, 175), "UPDATE AVAILABLE", 2), layer=4)
+            ##all_sprites.add(LcarsButton(colours.BLUE, "btn", (200, 175), "UPDATE LCARS", self.git_pull), layer=4)
 
-        all_sprites.add(LcarsButton(colours.ORANGE, "btn", (260, 175), "RESTART LCARS", self.exit), layer=4)
-        self.lcars = all_sprites.get_sprites_from_layer(4)
-        self.toggle_sprites(self.lcars, False)
+        #all_sprites.add(LcarsButton(colours.ORANGE, "btn", (260, 175), "RESTART LCARS", self.exit), layer=4)
+        #self.lcars = all_sprites.get_sprites_from_layer(4)
+        #self.toggle_sprites(self.lcars, False)
 
 
         # SFX
@@ -96,17 +111,6 @@ class ScreenWeather(LcarsScreen):
     def logoutHandler(self, item, event, clock):
         from screens.main import ScreenMain
         self.loadScreen(ScreenMain())
-
-    def reboot(self, item, event, clock):
-        subprocess.call(["reboot"])
-
-    def shutdown(self, item, event, clock):
-        subprocess.call(["shutdown"])
-
-    def git_pull(self, item, event, clock):
-        subprocess.call(["git", "pull"])
-        # Force LCARS restart
-        sys.exit()
 
     def exit(self, item, event, clock):
         sys.exit()
