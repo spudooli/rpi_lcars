@@ -5,6 +5,7 @@ BASEDIR = "/home/pi/rpi_lcars/"
 
 ob = open(BASEDIR + "scripts/otherbalance.txt", "r")
 otherbalance = ob.read()
+otherbalance = otherbalance.split(".")[0]
 
 po = open(BASEDIR + "scripts/power.txt", "r")
 wholehouse = po.read()
