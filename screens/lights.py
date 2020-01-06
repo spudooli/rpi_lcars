@@ -14,7 +14,7 @@ from ui.widgets.lcars_widgets import LcarsText, LcarsButton
 from ui.widgets.screen import LcarsScreen
 
 # Need to change class name to whatever screen is to be called
-class ScreenOps(LcarsScreen):
+class ScreenLights(LcarsScreen):
     def setup(self, all_sprites):
         # Load BG image
         all_sprites.add(LcarsBackgroundImage("assets/lcars_bg.png"), layer=0)
