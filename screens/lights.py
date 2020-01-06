@@ -107,7 +107,7 @@ class ScreenLights(LcarsScreen):
     # Button functions
     def display_hw(self, item, event, clock):
         self.toggle_sprites(self.hw, True)
-        self.toggle_sprites(self.outside, False
+        self.toggle_sprites(self.outside, False)
         self.toggle_sprites(self.bedroom, False)
 
     def display_outside(self, item, event, clock):
