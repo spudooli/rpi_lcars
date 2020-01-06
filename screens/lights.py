@@ -38,11 +38,14 @@ class ScreenLights(LcarsScreen):
 
         # Local hardware
         all_sprites.add(LcarsText(colours.ORANGE, (140, 175), "ALL LIGHTS", 2), layer=3)
-        all_sprites.add(LcarsButton(colours.ORANGE, "btn", (143, 400), "ON", self.alllightson), layer=3)
+        all_sprites.add(LcarsButton(colours.ORANGE, "btn", (143, 460), "ON", self.alllightson), layer=3)
         all_sprites.add(LcarsButton(colours.RED_BROWN, "btn", (143, 610), "OFF", self.alllightsoff), layer=3)
         all_sprites.add(LcarsText(colours.ORANGE, (200, 175), "OUTSIDE LIGHTS", 2), layer=3)
-        all_sprites.add(LcarsButton(colours.ORANGE, "btn", (200, 400), "ON", self.outsidelightson), layer=3)
+        all_sprites.add(LcarsButton(colours.ORANGE, "btn", (200, 460), "ON", self.outsidelightson), layer=3)
         all_sprites.add(LcarsButton(colours.RED_BROWN, "btn", (200, 610), "OFF", self.outsidelightsoff), layer=3)
+        all_sprites.add(LcarsText(colours.ORANGE, (260, 175), "Living Room Lights", 2), layer=3)
+        all_sprites.add(LcarsButton(colours.ORANGE, "btn", (260, 460), "ON", self.livingroomlightson), layer=3)
+        all_sprites.add(LcarsButton(colours.RED_BROWN, "btn", (260, 610), "OFF", self.livingroomlightson), layer=3)
         all_sprites.add(LcarsButton(colours.ORANGE, "btn", (380, 175), "REBOOT", self.reboot), layer=3)
         all_sprites.add(LcarsButton(colours.RED, "btn", (380, 350), "SHUTDOWN", self.shutdown), layer=3)
         self.hw = all_sprites.get_sprites_from_layer(3)
@@ -106,16 +109,22 @@ class ScreenLights(LcarsScreen):
         subprocess.call(["shutdown"])
     
     def alllightson(self, item, event, clock):
-        subprocess.call(["shutdown"])
+        subprocess.call(["ssh dave@192.168.1.2 'bash /var/www/scripts/lights.sh alllightson'"])
     
     def alllightsoff(self, item, event, clock):
-        subprocess.call(["shutdown"])
+        subprocess.call(["ssh dave@192.168.1.2 'bash /var/www/scripts/lights.sh alllightsoff"])
 
     def outsidelightson(self, item, event, clock):
-        subprocess.call(["shutdown"])
+        subprocess.call(["ssh dave@192.168.1.2 'bash /var/www/scripts/lights.sh outsidelightson"])
     
     def outsidelightsoff(self, item, event, clock):
-        subprocess.call(["shutdown"])
+        subprocess.call(["ssh dave@192.168.1.2 'bash /var/www/scripts/lights.sh outsidelightson"])
+    
+    def livingroomlightson(self, item, event, clock):
+        subprocess.call(["ssh dave@192.168.1.2 'bash /var/www/scripts/lights.sh outsidelightson"])
+    
+    def livingroomlightsoff(self, item, event, clock):
+        subprocess.call(["ssh dave@192.168.1.2 'bash /var/www/scripts/lights.sh outsidelightson"])
 
     def git_pull(self, item, event, clock):
         subprocess.call(["git", "pull"])
