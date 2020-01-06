@@ -38,7 +38,7 @@ def update_available():
         return 1
 
 #Get the balance
-def get_balance();
+def get_balance():
       fr = open("/home/pi/rpi_lcars/scripts/otherbalance.txt", "r")
       otherbalance = fr.read()
       return otherbalance
