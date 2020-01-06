@@ -23,16 +23,16 @@ class ScreenMain(LcarsScreen):
         all_sprites.add(self.stardate, layer=1)
 
         # Static text
-        all_sprites.add(LcarsText(colours.BLACK, (8, 40), "LCARS"), layer=1)
-        all_sprites.add(LcarsText(colours.ORANGE, (0, 135), "MAIN MENU", 2), layer=1)
+        all_sprites.add(LcarsText(colours.BLACK, (8, 40), "SPUDOOLI"), layer=1)
+        all_sprites.add(LcarsText(colours.ORANGE, (0, 135), "", 2), layer=1)
 
         # Buttons
         all_sprites.add(LcarsButton(colours.RED_BROWN, "btn", (6, 660), "LOGOUT", self.load_idle), layer=4)
-        all_sprites.add(LcarsButton(randomcolor(), "nav", (145, 15), "ENVIRO", self.load_enviro), layer=4)
+        all_sprites.add(LcarsButton(randomcolor(), "nav", (145, 15), "LIGHTS", self.load_enviro), layer=4)
         all_sprites.add(LcarsButton(randomcolor(), "nav", (200, 15), "NETWORK", self.load_network), layer=4)
-        all_sprites.add(LcarsButton(randomcolor(), "nav", (255, 15), "POWER", self.load_power), layer=4)
+        all_sprites.add(LcarsButton(randomcolor(), "nav", (255, 15), "SENSORS", self.load_power), layer=4)
         all_sprites.add(LcarsButton(randomcolor(), "nav", (310, 15), "OPERATIONS", self.load_auth), layer=4)
-        all_sprites.add(LcarsButton(randomcolor(), "nav", (365, 15), "", self.load_template), layer=4)
+        all_sprites.add(LcarsButton(randomcolor(), "nav", (365, 15), "WEATHER", self.load_weather), layer=4)
 
         # Load data from file
         returnpayload = read_txt("/tmp/alert")
@@ -96,6 +96,10 @@ class ScreenMain(LcarsScreen):
     def load_network(self, item, event, clock):
         from screens.network import ScreenNetwork
         self.loadScreen(ScreenNetwork())
+
+    def load_weather(self, item, event, clock):
+        from screens.network import ScreenNetwork
+        self.loadScreen(ScreenWeather())
 
     def load_enviro(self, item, event, clock):
         from screens.enviro import ScreenEnviro

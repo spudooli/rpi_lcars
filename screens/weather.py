@@ -14,7 +14,7 @@ from ui.widgets.lcars_widgets import LcarsText, LcarsButton
 from ui.widgets.screen import LcarsScreen
 
 # Need to change class name to whatever screen is to be called
-class ScreenOps(LcarsScreen):
+class ScreenWeather(LcarsScreen):
     def setup(self, all_sprites):
         # Load BG image
         all_sprites.add(LcarsBackgroundImage("assets/lcars_bg.png"), layer=0)
@@ -26,7 +26,7 @@ class ScreenOps(LcarsScreen):
 
         # Static text
         all_sprites.add(LcarsText(colours.BLACK, (8, 40), "SPUDOOLI"), layer=1)
-        all_sprites.add(LcarsText(colours.ORANGE, (0, 135), "OPERATIONS", 2), layer=1)
+        all_sprites.add(LcarsText(colours.ORANGE, (0, 135), "WEATHER", 2), layer=1)
 
         # Interfaces
         all_sprites.add(LcarsButton(colours.RED_BROWN, "btn", (6, 660), "MAIN", self.logoutHandler), layer=2)

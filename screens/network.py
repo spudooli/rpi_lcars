@@ -23,7 +23,7 @@ class ScreenNetwork(LcarsScreen):
         all_sprites.add(self.stardate, layer=1)
 
         # Static text
-        all_sprites.add(LcarsText(colours.BLACK, (8, 40), "LCARS"), layer=1)
+        all_sprites.add(LcarsText(colours.BLACK, (8, 40), "SPUDOOLI"), layer=1)
         all_sprites.add(LcarsText(colours.ORANGE, (0, 135), "NETWORK STATUS", 2), layer=1)
 
         # Interfaces
