@@ -50,9 +50,12 @@ class ScreenWeather(LcarsScreen):
             # Bump index and vertical pos
             index += 1
             ypos += 50
-
-        all_sprites.add(LcarsGifImage("/home/pi/rpi_lcars/assets/weather/clear-day.gif", (100, 144), 50), layer=3)
-
+        
+        saturday = read_txt("/home.pi/rpi_lcars/scripts/saturday.txt")
+        if saturday == "Partly cloudy":
+            all_sprites.add(LcarsText(colours.ORANGE, (300, 435), "Saturday", 1.8), layer=3)
+            all_sprites.add(LcarsGifImage("/home/pi/rpi_lcars/assets/weather/partly-cloudy-day.gif", (300,435), 50), layer=3)
+        
         # SFX
         self.beep1 = Sound("assets/audio/panel/201.wav")
         Sound("assets/audio/hail_2.wav").play()
