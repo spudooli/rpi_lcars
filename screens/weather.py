@@ -51,7 +51,7 @@ class ScreenWeather(LcarsScreen):
             index += 1
             ypos += 50
 
-        all_sprites.add(LcarsGifImage("assets/weather/clear-day.gif" (weather.icon), (100, 144), 50), layer=3)
+        all_sprites.add(LcarsGifImage("/home/pi/rpi_lcars/assets/weather/clear-day.gif", (100, 144), 50), layer=3)
 
         # SFX
         self.beep1 = Sound("assets/audio/panel/201.wav")
