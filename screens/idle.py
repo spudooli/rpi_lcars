@@ -9,18 +9,18 @@ from ui.widgets.screen import LcarsScreen
 
 class ScreenIdle(LcarsScreen):
     def setup(self, all_sprites):
-        all_sprites.add(LcarsBackgroundImage("assets/lcars_splash.png"), layer=0)
+        all_sprites.add(LcarsBackgroundImage("/home/pi/rpi_lcars/assets/lcars_splash.png"), layer=0)
         all_sprites.add(LcarsText(colours.ORANGE, (270, -1), "LCARS SYSTEM MONITOR", 1.8), layer=1)
         all_sprites.add(LcarsText(colours.BLUE, (330, -1), "ONLY AUTHORIZED PERSONNEL MAY ACCESS THIS TERMINAL", 1.5), layer=1)
         all_sprites.add(LcarsText(colours.BLUE, (360, -1), "TOUCH SCREEN TO PROCEED", 1.5), layer=1)
-        all_sprites.add(LcarsGifImage("assets/animated/st_logo.gif", (103, 369), 50), layer=1)
+        all_sprites.add(LcarsGifImage("/home/pi/rpi_lcars/assets/animated/st_logo.gif", (103, 369), 50), layer=1)
 
         # sounds
-        Sound("assets/audio/panel/215.wav").play()
-        self.sound_beep1 = Sound("assets/audio/panel/206.wav")
-        self.sound_denied = Sound("assets/audio/access_denied.wav")
-        self.sound_deny1 = Sound("assets/audio/deny_1.wav")
-        self.sound_deny2 = Sound("assets/audio/deny_2.wav")
+        Sound("/home/pi/rpi_lcars/assets/audio/panel/215.wav").play()
+        self.sound_beep1 = Sound("/home/pi/rpi_lcars/assets/audio/panel/206.wav")
+        self.sound_denied = Sound("/home/pi/rpi_lcars/assets/audio/access_denied.wav")
+        self.sound_deny1 = Sound("/home/pi/rpi_lcars/assets/audio/deny_1.wav")
+        self.sound_deny2 = Sound("/home/pi/rpi_lcars/assets/audio/deny_2.wav")
 
         self.granted = False
 

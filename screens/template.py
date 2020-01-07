@@ -15,7 +15,7 @@ from ui.widgets.screen import LcarsScreen
 class ScreenTemplate(LcarsScreen):
     def setup(self, all_sprites):
         # Load BG image
-        all_sprites.add(LcarsBackgroundImage("assets/lcars_bg.png"), layer=0)
+        all_sprites.add(LcarsBackgroundImage("/home/pi/rpi_lcars/assets/lcars_bg.png"), layer=0)
 
         # Time/Date display
         self.stardate = LcarsText(colours.BLUE, (12, 380), "", 1.5)
@@ -39,8 +39,8 @@ class ScreenTemplate(LcarsScreen):
         self.info_text = all_sprites.get_sprites_from_layer(3)
 
         # SFX
-        self.beep1 = Sound("assets/audio/panel/201.wav")
-        Sound("assets/audio/hail_2.wav").play()
+        self.beep1 = Sound("/home/pi/rpi_lcars/assets/audio/panel/201.wav")
+        Sound("/home/pi/rpi_lcars/assets/audio/hail_2.wav").play()
 
     def update(self, screenSurface, fpsClock):
         if pygame.time.get_ticks() - self.lastClockUpdate > 1000:

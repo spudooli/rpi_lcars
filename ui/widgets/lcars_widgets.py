@@ -12,12 +12,12 @@ class LcarsButton(LcarsWidget):
 
         # Load different image for shape
         if (shape == "nav"):
-            image = pygame.image.load("assets/nav.png").convert()
+            image = pygame.image.load("/home/pi/rpi_lcars/assets/nav.png").convert()
         elif (shape == "btn"):
-            image = pygame.image.load("assets/button.png").convert()
+            image = pygame.image.load("/home/pi/rpi_lcars/assets/button.png").convert()
 
         size = (image.get_rect().width, image.get_rect().height)
-        font = Font("assets/swiss911.ttf", 25)
+        font = Font("/home/pi/rpi_lcars/assets/swiss911.ttf", 25)
         textImage = font.render(text, True, colours.BLACK)
 
         # Change text position
@@ -35,7 +35,7 @@ class LcarsButton(LcarsWidget):
         LcarsWidget.__init__(self, colour, pos, size)
         self.applyColour(colour)
         self.highlighted = False
-        self.beep = Sound("assets/audio/panel/202.wav")
+        self.beep = Sound("/home/pi/rpi_lcars/assets/audio/panel/202.wav")
 
     def handleEvent(self, event, clock):
         handled = False
@@ -59,7 +59,7 @@ class LcarsText(LcarsWidget):
     def __init__(self, colour, pos, message, size=1.0, background=None):
         self.colour = colour
         self.background = background
-        self.font = Font("assets/swiss911.ttf", int(19.0 * size))
+        self.font = Font("/home/pi/rpi_lcars/assets/swiss911.ttf", int(19.0 * size))
 
         self.renderText(message)
         # center the text if needed

@@ -9,9 +9,9 @@ from ui.widgets.screen import LcarsScreen
 
 class ScreenAuthorize(LcarsScreen):
     def setup(self, all_sprites):
-        all_sprites.add(LcarsBackgroundImage("assets/lcars_splash.png"), layer=0)
+        all_sprites.add(LcarsBackgroundImage("/home/pi/rpi_lcars/assets/lcars_splash.png"), layer=0)
         all_sprites.add(LcarsText(colours.ORANGE, (270, -1), "AUTHORIZATION REQUIRED", 2), layer=1)
-        all_sprites.add(LcarsGifImage("assets/animated/st_logo.gif", (103, 369), 50), layer=1)
+        all_sprites.add(LcarsGifImage("/home/pi/rpi_lcars/assets/animated/st_logo.gif", (103, 369), 50), layer=1)
 
         all_sprites.add(LcarsButton(colours.GREY_BLUE, "btn", (320, 130), "1", self.num_1), layer=2)
         all_sprites.add(LcarsButton(colours.GREY_BLUE, "btn", (370, 130), "2", self.num_2), layer=2)
@@ -23,12 +23,12 @@ class ScreenAuthorize(LcarsScreen):
         all_sprites.add(LcarsButton(colours.GREY_BLUE, "btn", (370, 550), "8", self.num_8), layer=2)
 
         # sounds
-        Sound("assets/audio/panel/215.wav").play()
-        Sound("assets/audio/enter_authorization_code.wav").play()
-        self.sound_granted = Sound("assets/audio/accessing.wav")
-        self.sound_beep1 = Sound("assets/audio/panel/206.wav")
-        self.sound_denied = Sound("assets/audio/access_denied.wav")
-        self.sound_deny2 = Sound("assets/audio/deny_2.wav")
+        Sound("/home/pi/rpi_lcars/assets/audio/panel/215.wav").play()
+        Sound("/home/pi/rpi_lcars/assets/audio/enter_authorization_code.wav").play()
+        self.sound_granted = Sound("/home/pi/rpi_lcars/assets/audio/accessing.wav")
+        self.sound_beep1 = Sound("/home/pi/rpi_lcars/assets/audio/panel/206.wav")
+        self.sound_denied = Sound("/home/pi/rpi_lcars/assets/audio/access_denied.wav")
+        self.sound_deny2 = Sound("/home/pi/rpi_lcars/assets/audio/deny_2.wav")
 
         ############
         # SET PIN CODE WITH THIS VARIABLE
