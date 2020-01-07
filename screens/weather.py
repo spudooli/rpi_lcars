@@ -60,7 +60,7 @@ class ScreenWeather(LcarsScreen):
         sunday = read_txt("/home/pi/rpi_lcars/scripts/sunday.txt")
         print(saturday)
         if saturday[0] == "Partly cloudy":
-            all_sprites.add(LcarsText(colours.ORANGE, (300, 475), "Sunday", 1.8), layer=3)
+            all_sprites.add(LcarsText(colours.ORANGE, (300, 485), "Sunday", 1.8), layer=3)
             all_sprites.add(LcarsGifImage("/home/pi/rpi_lcars/assets/weather/partly-cloudy-day.gif", (315,550), 50), layer=3)
 
         # SFX
