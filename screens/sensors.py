@@ -30,19 +30,18 @@ class ScreenSensors(LcarsScreen):
 
         # Interfaces
         all_sprites.add(LcarsButton(colours.RED_BROWN, "btn", (6, 660), "MAIN", self.logoutHandler), layer=2)
-        all_sprites.add(LcarsButton(randomcolor(), "nav", (145, 15), "TERMINAL", self.display_hw), layer=2)
-        all_sprites.add(LcarsButton(randomcolor(), "nav", (200, 15), "LCARS UI", self.display_lcars), layer=2)
+        all_sprites.add(LcarsButton(randomcolor(), "nav", (145, 15), "TEMPERATURES", self.display_hw), layer=2)
+        all_sprites.add(LcarsButton(randomcolor(), "nav", (200, 15), "MONEY", self.display_lcars), layer=2)
         all_sprites.add(LcarsButton(randomcolor(), "nav", (255, 15), "BUTTON 3", self.nullfunction), layer=2)
         all_sprites.add(LcarsButton(randomcolor(), "nav", (310, 15), "BUTTON 4", self.nullfunction), layer=2)
         all_sprites.add(LcarsButton(randomcolor(), "nav", (365, 15), "", self.nullfunction), layer=2)
 
         # Local hardware
-        all_sprites.add(LcarsText(colours.ORANGE, (140, 175), "UPTIME", 2), layer=3)
-        all_sprites.add(LcarsText(colours.BLUE, (200, 175), get_uptime(), 2), layer=3)
-        all_sprites.add(LcarsText(colours.ORANGE, (260, 175), "SYSTEM LOAD AVG", 2), layer=3)
-        all_sprites.add(LcarsText(colours.BLUE, (320, 175), get_load(), 2), layer=3)
-        all_sprites.add(LcarsButton(colours.ORANGE, "btn", (380, 175), "REBOOT", self.reboot), layer=3)
-        all_sprites.add(LcarsButton(colours.RED, "btn", (380, 350), "SHUTDOWN", self.shutdown), layer=3)
+        all_sprites.add(LcarsText(colours.ORANGE, (140, 175), "Inside Temperature", 1.2), layer=3)
+        all_sprites.add(LcarsText(colours.BLUE, (200, 175), get_insideTemerature(), 2), layer=3)
+        all_sprites.add(LcarsText(colours.ORANGE, (260, 175), "Outside Temperature", 1.2), layer=3)
+        all_sprites.add(LcarsText(colours.BLUE, (320, 175), get_outsideTemerature()(), 2), layer=3)
+
         self.hw = all_sprites.get_sprites_from_layer(3)
 
         # LCARS UI

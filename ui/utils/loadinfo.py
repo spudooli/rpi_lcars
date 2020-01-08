@@ -1,5 +1,6 @@
 # Read and process data from files/system
 import subprocess
+import json
 
 # Return lines of text
 def read_txt(filename):
@@ -7,7 +8,7 @@ def read_txt(filename):
     with open(filename, mode='r') as infile:
         lines = infile.read().splitlines()
 
-    return lines;
+    return lines
 
 # Return current uptime
 def get_uptime():
@@ -39,6 +40,30 @@ def update_available():
 
 #Get the balance
 def get_balance():
-      fr = open("/home/pi/rpi_lcars/scripts/otherbalance.txt", "r")
-      otherbalance = fr.read()
-      return otherbalance
+    fr = open("/home/pi/rpi_lcars/scripts/otherbalance.txt", "r")
+    otherbalance = fr.read()
+    return otherbalance
+
+#Get the inside temperature
+def get_insideTemerature():
+    jsonFile = open("/var/www/scripts/statusfile.json", "r")
+    data = json.load(jsonFile)
+    jsonFile.close()
+    indoorTemperature = data["indoorTemperature"]
+    return indoorTemperature
+
+#Get the outside temperature
+def get_outsideTemerature():
+    jsonFile = open("/var/www/scripts/statusfile.json", "r")
+    data = json.load(jsonFile)
+    jsonFile.close()
+    outsideTemerature = data["outsideTemerature"]
+    return outsideTemerature
+
+#Get the inside pressure
+def get_indoorPressure():
+    jsonFile = open("/var/www/scripts/statusfile.json", "r")
+    data = json.load(jsonFile)
+    jsonFile.close()
+    indoorPressure = data["indoorPressure"]
+    return indoorPressure
