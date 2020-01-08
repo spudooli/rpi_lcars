@@ -46,7 +46,7 @@ def get_balance():
 
 #Get the inside temperature
 def get_insidetemperature():
-    jsonFile = open("/var/www/scripts/statusfile.json", "r")
+    jsonFile = open("/home/pi/rpi_lcars/scripts/statusfile.json", "r")
     data = json.load(jsonFile)
     jsonFile.close()
     indoorTemperature = data["indoorTemperature"]
@@ -54,15 +54,15 @@ def get_insidetemperature():
 
 #Get the outside temperature
 def get_outsidetemperature():
-    jsonFile = open("/var/www/scripts/statusfile.json", "r")
+    jsonFile = open("/home/pi/rpi_lcars/scripts/statusfile.json", "r")
     data = json.load(jsonFile)
     jsonFile.close()
-    outsideTemerature = data["outsideTemerature"]
-    return outsideTemerature
+    outsideTemperature = data["outsideTemperature"]
+    return outsideTemperature
 
 #Get the inside pressure
 def get_indoorPressure():
-    jsonFile = open("/var/www/scripts/statusfile.json", "r")
+    jsonFile = open("/home/pi/rpi_lcars/scripts/statusfile.json", "r")
     data = json.load(jsonFile)
     jsonFile.close()
     indoorPressure = data["indoorPressure"]
