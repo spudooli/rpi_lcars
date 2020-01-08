@@ -139,7 +139,7 @@ class ScreenLights(LcarsScreen):
         subprocess.call(["shutdown"])
     
     def alllightson(self, item, event, clock):
-        subprocess.Popen([(['bash','/home/pi/rpi_lcars/scripts/ssh-commands.sh', 'alllightson']])
+        subprocess.Popen(['bash','/home/pi/rpi_lcars/scripts/ssh-commands.sh', 'alllightson'])
     
     def alllightsoff(self, item, event, clock):
         subprocess.Popen(['bash','/home/pi/rpi_lcars/scripts/ssh-commands.sh', 'alllightsff'])
