@@ -21,19 +21,9 @@ def checkLCARS():
 
 def startupAlert():
     print "Init alert."
-    alertfile = open("/tmp/alert", 'w')
-    alertfile.write("SYSTEM ALERT\n")
-    alertfile.write("System startup in process.\n")
-    alertfile.write("Sensor and network data may be\n")
-    alertfile.write("incomplete.\n")
 
 def createAlert():
     print "Writing alert."
-    alertfile = open("/tmp/alert", 'w')
-    alertfile.write("RANDOM THOUGHT\n")
-    alertfile.write("The first time any man's freedom\n")
-    alertfile.write("is trodden on, we're all damaged.\n")
-    alertfile.write("                         -Jean-Luc Picard\n")
 
 # Time-based functions
 
@@ -44,9 +34,6 @@ def startup():
 # Called every 30 seconds
 def thirty():
     print("30 Seconds")
-    subprocess.Popen(["./scripts/ipscan.py", "routers"])
-    subprocess.Popen(["./scripts/ipscan.py", "sensors"])
-    subprocess.Popen(["./scripts/ipscan.py", "printers"])
 
 def sixty():
     print("1 Minute")
