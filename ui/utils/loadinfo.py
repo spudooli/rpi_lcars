@@ -45,7 +45,7 @@ def get_balance():
     return otherbalance
 
 #Get the inside temperature
-def get_insideTemerature():
+def get_insidetemperature():
     jsonFile = open("/var/www/scripts/statusfile.json", "r")
     data = json.load(jsonFile)
     jsonFile.close()
@@ -53,7 +53,7 @@ def get_insideTemerature():
     return indoorTemperature
 
 #Get the outside temperature
-def get_outsideTemerature():
+def get_outsidetemperature():
     jsonFile = open("/var/www/scripts/statusfile.json", "r")
     data = json.load(jsonFile)
     jsonFile.close()
