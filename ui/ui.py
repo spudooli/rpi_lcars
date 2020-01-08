@@ -10,7 +10,7 @@ class UserInterface:
         pygame.font.init()
         pygame.init()
         
-        self.screenSurface = pygame.display.set_mode(resolution) #, pygame.FULLSCREEN)
+        self.screenSurface = pygame.display.set_mode(resolution,pygame.NOFRAME) #, pygame.FULLSCREEN)
         self.fpsClock = pygame.time.Clock()
         self.fps = fps
         pygame.display.set_caption("Spudooli House Control")
