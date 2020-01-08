@@ -151,10 +151,10 @@ class ScreenLights(LcarsScreen):
         subprocess.call(["ssh dave@192.168.1.2 'bash /var/www/scripts/lights.sh outsidelightson"])
     
     def livingroomlightson(self, item, event, clock):
-        subprocess.call(["ssh dave@192.168.1.2 'bash /var/www/scripts/lights.sh outsidelightson"])
+        subprocess.call(["'bash','/home/pi/rpi_lcars/scripts/ssh-commands.sh', 'livingroomlightsson'"])
     
     def livingroomlightsoff(self, item, event, clock):
-        subprocess.call(["ssh dave@192.168.1.2 'bash /var/www/scripts/lights.sh outsidelightson"])
+        subprocess.call(["'bash','/home/pi/rpi_lcars/scripts/ssh-commands.sh', 'livingroomlightssoff'"])
     
     def frontdoorlightson(self, item, event, clock):
         subprocess.call(["ssh dave@192.168.1.2 'bash /var/www/scripts/lights.sh frontdoorlighton"])
