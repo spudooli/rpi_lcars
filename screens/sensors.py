@@ -30,10 +30,10 @@ class ScreenSensors(LcarsScreen):
 
         # Interfaces
         all_sprites.add(LcarsButton(colours.RED_BROWN, "btn", (6, 660), "MAIN", self.logoutHandler), layer=2)
-        all_sprites.add(LcarsButton(randomcolor(), "nav", (145, 15), "TEMPERATURES", self.display_hw), layer=2)
+        all_sprites.add(LcarsButton(randomcolor(), "nav", (145, 15), "ENVIRO", self.display_hw), layer=2)
         all_sprites.add(LcarsButton(randomcolor(), "nav", (200, 15), "MONEY", self.display_lcars), layer=2)
-        all_sprites.add(LcarsButton(randomcolor(), "nav", (255, 15), "BUTTON 3", self.nullfunction), layer=2)
-        all_sprites.add(LcarsButton(randomcolor(), "nav", (310, 15), "BUTTON 4", self.nullfunction), layer=2)
+        all_sprites.add(LcarsButton(randomcolor(), "nav", (255, 15), "", self.nullfunction), layer=2)
+        all_sprites.add(LcarsButton(randomcolor(), "nav", (310, 15), "", self.nullfunction), layer=2)
         all_sprites.add(LcarsButton(randomcolor(), "nav", (365, 15), "", self.nullfunction), layer=2)
 
         # Local hardware
@@ -41,6 +41,8 @@ class ScreenSensors(LcarsScreen):
         all_sprites.add(LcarsText(colours.BLUE, (165, 265), get_insidetemperature(), 2), layer=3)
         all_sprites.add(LcarsText(colours.ORANGE, (140, 370), "Outside Temperature", 1.2), layer=3)
         all_sprites.add(LcarsText(colours.BLUE, (165, 465), get_outdoortemperature(), 2), layer=3)
+        all_sprites.add(LcarsText(colours.ORANGE, (140, 570), "Pressure hPa", 1.2), layer=3)
+        all_sprites.add(LcarsText(colours.BLUE, (165, 665), get_indoorPressure(), 2), layer=3)
 
         self.hw = all_sprites.get_sprites_from_layer(3)
 
