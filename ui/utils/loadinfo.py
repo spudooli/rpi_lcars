@@ -66,4 +66,5 @@ def get_indoorPressure():
     data = json.load(jsonFile)
     jsonFile.close()
     indoorPressure = data["indoorPressure"]
+    indoorPressure = indoorPressure[:4]
     return indoorPressure
