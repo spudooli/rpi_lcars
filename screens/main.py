@@ -4,6 +4,7 @@ from pygame.mixer import Sound
 
 from ui.utils.loadinfo import *
 from ui.colours import randomcolor
+from ui.utils.loadinfo import *
 
 from ui import colours
 from ui.widgets.background import LcarsBackgroundImage, LcarsImage
@@ -38,6 +39,8 @@ class ScreenMain(LcarsScreen):
         all_sprites.add(LcarsButton(randomcolor(), "nav", (255, 15), "SENSORS", self.load_sensors), layer=4)
         all_sprites.add(LcarsButton(randomcolor(), "nav", (310, 15), "OPERATIONS", self.load_auth), layer=4)
         all_sprites.add(LcarsButton(randomcolor(), "nav", (365, 15), "", self.load_network), layer=4)
+
+        self.bankaccount.setText(get_balance())
 
         # Rotating Deep Space 9
         all_sprites.add(LcarsGifImage("/home/pi/rpi_lcars/assets/animated/ds9_3d.gif", (148, 475), 100), layer=1)
