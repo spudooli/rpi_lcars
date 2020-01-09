@@ -37,7 +37,7 @@ class ScreenSensors(LcarsScreen):
         all_sprites.add(LcarsButton(randomcolor(), "nav", (365, 15), "", self.nullfunction), layer=2)
 
         # Local hardware
-        all_sprites.add(LcarsText(colours.ORANGE, (140, 175), "Inside Temperature", 1.4), layer=3)
+        all_sprites.add(LcarsText(colours.ORANGE, (145, 175), "Inside Temperature", 1.4), layer=3)
         all_sprites.add(LcarsText(colours.BLUE, (165, 300), get_insidetemperature(), 2.2), layer=3)
         all_sprites.add(LcarsText(colours.ORANGE, (140, 390), "Outside Temperature", 1.4), layer=3)
         all_sprites.add(LcarsText(colours.BLUE, (165, 520), get_outdoortemperature(), 2.2), layer=3)

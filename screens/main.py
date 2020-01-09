@@ -20,6 +20,7 @@ class ScreenMain(LcarsScreen):
         # Setup time/date display
         self.stardate = LcarsText(colours.BLUE, (12, 380), "", 1.5)
         self.lastClockUpdate = 0
+        self.lastStatusFileUpdate = 0
         all_sprites.add(self.stardate, layer=1)
 
         # Static text
@@ -32,7 +33,7 @@ class ScreenMain(LcarsScreen):
         all_sprites.add(LcarsButton(randomcolor(), "nav", (200, 15), "WEATHER", self.load_weather), layer=4)
         all_sprites.add(LcarsButton(randomcolor(), "nav", (255, 15), "SENSORS", self.load_sensors), layer=4)
         all_sprites.add(LcarsButton(randomcolor(), "nav", (310, 15), "OPERATIONS", self.load_auth), layer=4)
-        all_sprites.add(LcarsButton(randomcolor(), "nav", (365, 15), "NETWORK", self.load_network), layer=4)
+        all_sprites.add(LcarsButton(randomcolor(), "nav", (365, 15), "", self.load_network), layer=4)
 
         # Load data from file
         returnpayload = read_txt("/home/pi/rpi_lcars/scripts/status.txt")
@@ -59,6 +60,9 @@ class ScreenMain(LcarsScreen):
         if pygame.time.get_ticks() - self.lastClockUpdate > 1000:
             self.stardate.setText("{}".format(datetime.now().strftime("%a %b %d, %Y - %X")))
             self.lastClockUpdate = pygame.time.get_ticks()
+        if pygame.time.get_ticks() - self.lastStatusFileUpdate > 10000:
+            self.load_status_file()
+            self.lastStatusFileUpdate = pygame.time.get_ticks()
         LcarsScreen.update(self, screenSurface, fpsClock)
 
     def handleEvents(self, event, fpsClock):
@@ -104,3 +108,19 @@ class ScreenMain(LcarsScreen):
     def load_lights(self, item, event, clock):
         from screens.lights import ScreenLights
         self.loadScreen(ScreenLights())
+    
+    def load_status_file(self, item, event, clock):
+        # Load data from file
+        returnpayload = read_txt("/home/pi/rpi_lcars/scripts/status.txt")
+
+        # First line in file is always going to be heading
+        all_sprites.add(LcarsText(colours.ORANGE, (137, 133), returnpayload[0], 1.8), layer=3)
+
+        # Loop through results starting at second element
+        index = 1
+        ypos = 190
+        while index < len(returnpayload):
+            all_sprites.add(LcarsText(colours.BLUE, (ypos, 150), returnpayload[index], 1.8), layer=3)
+            # Bump index and vertical pos
+            index += 1
+            ypos += 50
