@@ -60,6 +60,14 @@ def get_outdoortemperature():
     outdoorTemperature = data["outdoorTemperature"]
     return outdoorTemperature
 
+#Get the kitchen temperature
+def get_kitchentemperature():
+    jsonFile = open("/home/pi/rpi_lcars/scripts/statusfile.json", "r")
+    data = json.load(jsonFile)
+    jsonFile.close()
+    kitchenTemperature = data["kitchenTemperature"]
+    return kitchenTemperature
+
 #Get the inside pressure
 def get_indoorPressure():
     jsonFile = open("/home/pi/rpi_lcars/scripts/statusfile.json", "r")
