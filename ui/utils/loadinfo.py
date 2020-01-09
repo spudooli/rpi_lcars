@@ -38,13 +38,7 @@ def update_available():
     elif gitstatus[0] == "1":
         return 1
 
-#Get the balance
-def get_balance():
-    fr = open("/home/pi/rpi_lcars/scripts/otherbalance.txt", "r")
-    otherbalance = fr.read()
-    return otherbalance
-
-#Get the inside temperature
+#Get the status file data
 def get_statusfiledata(value):
     jsonFile = open("/home/pi/rpi_lcars/scripts/statusfile.json", "r")
     data = json.load(jsonFile)
@@ -52,34 +46,3 @@ def get_statusfiledata(value):
     value = data[value]
     return value
 
-#Get the inside temperature
-def get_insidetemperature():
-    jsonFile = open("/home/pi/rpi_lcars/scripts/statusfile.json", "r")
-    data = json.load(jsonFile)
-    jsonFile.close()
-    indoorTemperature = data["indoorTemperature"]
-    return indoorTemperature
-
-#Get the outdoor temperature
-def get_outdoortemperature():
-    jsonFile = open("/home/pi/rpi_lcars/scripts/statusfile.json", "r")
-    data = json.load(jsonFile)
-    jsonFile.close()
-    outdoorTemperature = data["outdoorTemperature"]
-    return outdoorTemperature
-
-#Get the kitchen temperature
-def get_kitchentemperature():
-    jsonFile = open("/home/pi/rpi_lcars/scripts/statusfile.json", "r")
-    data = json.load(jsonFile)
-    jsonFile.close()
-    kitchenTemperature = data["kitchenTemperature"][:2]
-    return kitchenTemperature
-
-#Get the inside pressure
-def get_indoorPressure():
-    jsonFile = open("/home/pi/rpi_lcars/scripts/statusfile.json", "r")
-    data = json.load(jsonFile)
-    jsonFile.close()
-    indoorPressure = data["indoorPressure"][:4]
-    return indoorPressure
