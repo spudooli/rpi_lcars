@@ -26,7 +26,9 @@ class ScreenMain(LcarsScreen):
         self.lastStatusFileUpdate = 0
 
         self.bankaccount = LcarsText(colours.BLUE, (140, 150), "X", 1.8)
+        all_sprites.add(self.bankaccount, layer=1)
         self.power = LcarsText(colours.BLUE, (200, 150), "X", 1.8)
+        all_sprites.add(self.power, layer=1)
 
         # Static text
         all_sprites.add(LcarsText(colours.BLACK, (8, 40), "SPUDOOLI", 1.2), layer=1)
