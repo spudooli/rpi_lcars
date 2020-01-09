@@ -73,6 +73,5 @@ def get_indoorPressure():
     jsonFile = open("/home/pi/rpi_lcars/scripts/statusfile.json", "r")
     data = json.load(jsonFile)
     jsonFile.close()
-    indoorPressure = data["indoorPressure"]
-    indoorPressure = indoorPressure[:4]
+    indoorPressure = data["indoorPressure"][:4]
     return indoorPressure
