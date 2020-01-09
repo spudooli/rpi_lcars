@@ -55,11 +55,17 @@ class ScreenWeather(LcarsScreen):
         if saturday[0] == "Partly cloudy":
             all_sprites.add(LcarsText(colours.ORANGE, (300, 230), "Saturday", 1.8), layer=3)
             all_sprites.add(LcarsGifImage("/home/pi/rpi_lcars/assets/weather/partly-cloudy-day.gif", (315,300), 50), layer=3)
+        if saturday[0] == "Fine":
+            all_sprites.add(LcarsText(colours.ORANGE, (300, 230), "Saturday", 1.8), layer=3)
+            all_sprites.add(LcarsGifImage("/home/pi/rpi_lcars/assets/weather/clear-day.gif", (315,300), 50), layer=3)
 
         sunday = read_txt("/home/pi/rpi_lcars/scripts/sunday.txt")
-        if saturday[0] == "Partly cloudy":
+        if sunday[0] == "Partly cloudy":
             all_sprites.add(LcarsText(colours.ORANGE, (300, 495), "Sunday", 1.8), layer=3)
             all_sprites.add(LcarsGifImage("/home/pi/rpi_lcars/assets/weather/partly-cloudy-day.gif", (315,550), 50), layer=3)
+        if sunday[0] == "Fine":
+            all_sprites.add(LcarsText(colours.ORANGE, (300, 495), "Sunday", 1.8), layer=3)
+            all_sprites.add(LcarsGifImage("/home/pi/rpi_lcars/assets/weather/clear-day.gif", (315,550), 50), layer=3)
 
         # SFX
         self.beep1 = Sound("/home/pi/rpi_lcars/assets/audio/panel/201.wav")
