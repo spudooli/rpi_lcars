@@ -109,7 +109,7 @@ class ScreenMain(LcarsScreen):
         from screens.lights import ScreenLights
         self.loadScreen(ScreenLights())
     
-    def load_status_file(self, item, event, clock):
+    def load_status_file(self):
         # Load data from file
         returnpayload = read_txt("/home/pi/rpi_lcars/scripts/status.txt")
 
