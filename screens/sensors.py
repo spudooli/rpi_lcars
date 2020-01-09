@@ -50,6 +50,9 @@ class ScreenSensors(LcarsScreen):
 
         self.hw = all_sprites.get_sprites_from_layer(3)
 
+        # Add a little flair
+        all_sprites.add(LcarsGifImage("assets/animated/fwscan.gif", (320, 556), 100), layer=3)
+
         # LCARS UI
         # Check for update
         if update_available() == False:
