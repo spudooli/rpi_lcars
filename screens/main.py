@@ -114,13 +114,13 @@ class ScreenMain(LcarsScreen):
         returnpayload = read_txt("/home/pi/rpi_lcars/scripts/status.txt")
 
         # First line in file is always going to be heading
-        all_sprites.add(LcarsText(colours.ORANGE, (137, 133), returnpayload[0], 1.8), layer=3)
+        self.all_sprites.add(LcarsText(colours.ORANGE, (137, 133), returnpayload[0], 1.8), layer=3)
 
         # Loop through results starting at second element
         index = 1
         ypos = 190
         while index < len(returnpayload):
-            all_sprites.add(LcarsText(colours.BLUE, (ypos, 150), returnpayload[index], 1.8), layer=3)
+            self.all_sprites.add(LcarsText(colours.BLUE, (ypos, 150), returnpayload[index], 1.8), layer=3)
             # Bump index and vertical pos
             index += 1
             ypos += 50
