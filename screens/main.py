@@ -36,7 +36,7 @@ class ScreenMain(LcarsScreen):
         all_sprites.add(LcarsButton(randomcolor(), "nav", (365, 15), "", self.load_network), layer=4)
 
         # Load data from file
-        load_status_file(all_sprites)
+        self.load_status_file(all_sprites)
 
         # Rotating Deep Space 9
         all_sprites.add(LcarsGifImage("/home/pi/rpi_lcars/assets/animated/ds9_3d.gif", (148, 475), 100), layer=1)
