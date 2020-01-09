@@ -42,7 +42,7 @@ class ScreenSensors(LcarsScreen):
         all_sprites.add(LcarsText(colours.ORANGE, (140, 390), "Outside Temperature", 1.4), layer=3)
         all_sprites.add(LcarsText(colours.BLUE, (165, 520), get_statusfiledata("outdoorTemperature"), 2.2), layer=3)
         all_sprites.add(LcarsText(colours.ORANGE, (140, 610), "Pressure hPa", 1.4), layer=3)
-        all_sprites.add(LcarsText(colours.BLUE, (165, 663), get_statusfiledata("pressure"), 2.2), layer=3)
+        all_sprites.add(LcarsText(colours.BLUE, (165, 663), get_statusfiledata("indoorPressure"), 2.2), layer=3)
         all_sprites.add(LcarsText(colours.ORANGE, (222, 175), "Outside Temperature", 1.4), layer=3)
         all_sprites.add(LcarsText(colours.BLUE, (249, 300), get_statusfiledata("outdoorTemperature"), 2.2), layer=3)
         all_sprites.add(LcarsText(colours.ORANGE, (222, 390), "Kitchen Temperature", 1.4), layer=3)
