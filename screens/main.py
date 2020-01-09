@@ -20,8 +20,12 @@ class ScreenMain(LcarsScreen):
         # Setup time/date display
         self.stardate = LcarsText(colours.BLUE, (12, 380), "", 1.5)
         self.lastClockUpdate = 0
-        self.lastStatusFileUpdate = 0
         all_sprites.add(self.stardate, layer=1)
+
+        self.lastStatusFileUpdate = 0
+
+        self.bankaccount = LcarsText(colours.BLUE, (140, 150), "", 1.8)
+        self.power = LcarsText(colours.BLUE, (200, 150), "", 1.8)
 
         # Static text
         all_sprites.add(LcarsText(colours.BLACK, (8, 40), "SPUDOOLI", 1.2), layer=1)
@@ -35,9 +39,6 @@ class ScreenMain(LcarsScreen):
         all_sprites.add(LcarsButton(randomcolor(), "nav", (310, 15), "OPERATIONS", self.load_auth), layer=4)
         all_sprites.add(LcarsButton(randomcolor(), "nav", (365, 15), "", self.load_network), layer=4)
 
-        # Load data from file
-        self.load_status_file(all_sprites)
-
         # Rotating Deep Space 9
         all_sprites.add(LcarsGifImage("/home/pi/rpi_lcars/assets/animated/ds9_3d.gif", (148, 475), 100), layer=1)
 
@@ -49,19 +50,7 @@ class ScreenMain(LcarsScreen):
             self.stardate.setText("{}".format(datetime.now().strftime("%a %b %d, %Y - %X")))
             self.lastClockUpdate = pygame.time.get_ticks()
         if pygame.time.get_ticks() - self.lastStatusFileUpdate > 10000:
-            returnpayload = read_txt("/home/pi/rpi_lcars/scripts/status.txt")
-
-            #First line in file is always going to be heading
-            self.all_sprites.add(LcarsText(colours.ORANGE, (137, 133), returnpayload[0], 1.8), layer=3)
-
-            # Loop through results starting at second element
-            index = 1
-            ypos = 190
-            while index < len(returnpayload):
-                self.all_sprites.add(LcarsText(colours.BLUE, (ypos, 150), returnpayload[index], 1.8), layer=3)
-                # Bump index and vertical pos
-                index += 1
-                ypos += 50
+            self.bankaccount.setText(get_balance())
             self.lastStatusFileUpdate = pygame.time.get_ticks()
         LcarsScreen.update(self, screenSurface, fpsClock)
 
