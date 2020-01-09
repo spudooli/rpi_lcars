@@ -54,9 +54,8 @@ class ScreenMain(LcarsScreen):
         if pygame.time.get_ticks() - self.lastClockUpdate > 1000:
             self.stardate.setText("{}".format(datetime.now().strftime("%a %b %d, %Y - %X")))
             self.lastClockUpdate = pygame.time.get_ticks()
-        if pygame.time.get_ticks() - self.lastStatusFileUpdate > 10000:
-            print("Update")
-            self.bankaccount.setText(get_balance())
+        if pygame.time.get_ticks() - self.lastStatusFileUpdate > 1800000:
+            self.bankaccount.setText("Bank account " . get_balance())
             self.lastStatusFileUpdate = pygame.time.get_ticks()
         LcarsScreen.update(self, screenSurface, fpsClock)
 

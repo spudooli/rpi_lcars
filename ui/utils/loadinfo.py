@@ -45,6 +45,14 @@ def get_balance():
     return otherbalance
 
 #Get the inside temperature
+def get_statusfiledata(value):
+    jsonFile = open("/home/pi/rpi_lcars/scripts/statusfile.json", "r")
+    data = json.load(jsonFile)
+    jsonFile.close()
+    value = data[value]
+    return value
+
+#Get the inside temperature
 def get_insidetemperature():
     jsonFile = open("/home/pi/rpi_lcars/scripts/statusfile.json", "r")
     data = json.load(jsonFile)
