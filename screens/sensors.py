@@ -45,7 +45,7 @@ class ScreenSensors(LcarsScreen):
         all_sprites.add(LcarsText(colours.BLUE, (165, 640), get_indoorPressure(), 2), layer=3)
         all_sprites.add(LcarsText(colours.ORANGE, (200, 175), "Outside Temperature", 1.4), layer=3)
         all_sprites.add(LcarsText(colours.BLUE, (265, 265), get_outdoortemperature(), 2), layer=3)
-        all_sprites.add(LcarsText(colours.ORANGE, (200, 175), "Kitchen Temperature", 1.4), layer=3)
+        all_sprites.add(LcarsText(colours.ORANGE, (200, 370), "Kitchen Temperature", 1.4), layer=3)
         all_sprites.add(LcarsText(colours.BLUE, (265, 370), get_kitchentemperature(), 2), layer=3)
 
         self.hw = all_sprites.get_sprites_from_layer(3)
