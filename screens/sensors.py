@@ -38,15 +38,15 @@ class ScreenSensors(LcarsScreen):
 
         # Local hardware
         all_sprites.add(LcarsText(colours.ORANGE, (140, 175), "Inside Temperature", 1.4), layer=3)
-        all_sprites.add(LcarsText(colours.BLUE, (165, 265), get_insidetemperature(), 2), layer=3)
+        all_sprites.add(LcarsText(colours.BLUE, (165, 300), get_insidetemperature(), 2), layer=3)
         all_sprites.add(LcarsText(colours.ORANGE, (140, 370), "Outside Temperature", 1.4), layer=3)
-        all_sprites.add(LcarsText(colours.BLUE, (165, 465), get_outdoortemperature(), 2), layer=3)
+        all_sprites.add(LcarsText(colours.BLUE, (165, 500), get_outdoortemperature(), 2), layer=3)
         all_sprites.add(LcarsText(colours.ORANGE, (140, 610), "Pressure hPa", 1.4), layer=3)
-        all_sprites.add(LcarsText(colours.BLUE, (165, 640), get_indoorPressure(), 2), layer=3)
-        all_sprites.add(LcarsText(colours.ORANGE, (200, 175), "Outside Temperature", 1.4), layer=3)
-        all_sprites.add(LcarsText(colours.BLUE, (265, 265), get_outdoortemperature(), 2), layer=3)
-        all_sprites.add(LcarsText(colours.ORANGE, (200, 370), "Kitchen Temperature", 1.4), layer=3)
-        all_sprites.add(LcarsText(colours.BLUE, (265, 370), get_kitchentemperature(), 2), layer=3)
+        all_sprites.add(LcarsText(colours.BLUE, (165, 663), get_indoorPressure(), 2), layer=3)
+        all_sprites.add(LcarsText(colours.ORANGE, (222, 175), "Outside Temperature", 1.4), layer=3)
+        all_sprites.add(LcarsText(colours.BLUE, (249, 300), get_outdoortemperature(), 2), layer=3)
+        all_sprites.add(LcarsText(colours.ORANGE, (222, 370), "Kitchen Temperature", 1.4), layer=3)
+        all_sprites.add(LcarsText(colours.BLUE, (249, 500), get_kitchentemperature(), 2), layer=3)
 
         self.hw = all_sprites.get_sprites_from_layer(3)
 
