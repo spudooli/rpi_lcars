@@ -61,7 +61,19 @@ class ScreenMain(LcarsScreen):
             self.stardate.setText("{}".format(datetime.now().strftime("%a %b %d, %Y - %X")))
             self.lastClockUpdate = pygame.time.get_ticks()
         if pygame.time.get_ticks() - self.lastStatusFileUpdate > 10000:
-            self.load_status_file(all_sprites)
+            returnpayload = read_txt("/home/pi/rpi_lcars/scripts/status.txt")
+
+            #First line in file is always going to be heading
+            self.all_sprites.add(LcarsText(colours.ORANGE, (137, 133), returnpayload[0], 1.8), layer=3)
+
+            # Loop through results starting at second element
+            index = 1
+            ypos = 190
+            while index < len(returnpayload):
+                self.all_sprites.add(LcarsText(colours.BLUE, (ypos, 150), returnpayload[index], 1.8), layer=3)
+                # Bump index and vertical pos
+                index += 1
+                ypos += 50
             self.lastStatusFileUpdate = pygame.time.get_ticks()
         LcarsScreen.update(self, screenSurface, fpsClock)
 
