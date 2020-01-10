@@ -48,7 +48,7 @@ class ScreenMain(LcarsScreen):
         all_sprites.add(LcarsButton(randomcolor(), "nav", (365, 15), "", self.load_network), layer=4)
 
         self.bankaccount.setText("Bank account " + get_statusfiledata("otherbalance"))
-        self.power.setText("Power " + get_statusfiledata("power")))
+        self.power.setText("Power " + get_statusfiledata("power"))
         self.power.setText("Inside " + get_statusfiledata("indoorTemperature"))
         self.power.setText("Outside " + get_statusfiledata("outdoorTemperature"))
 
@@ -115,19 +115,3 @@ class ScreenMain(LcarsScreen):
     def load_lights(self, item, event, clock):
         from screens.lights import ScreenLights
         self.loadScreen(ScreenLights())
-    
-    def load_status_file(self, all_sprites):
-        # Load data from file
-        returnpayload = read_txt("/home/pi/rpi_lcars/scripts/status.txt")
-
-        # First line in file is always going to be heading
-        self.all_sprites.add(LcarsText(colours.ORANGE, (137, 133), returnpayload[0], 1.8), layer=3)
-
-        # Loop through results starting at second element
-        index = 1
-        ypos = 190
-        while index < len(returnpayload):
-            self.all_sprites.add(LcarsText(colours.BLUE, (ypos, 150), returnpayload[index], 1.8), layer=3)
-            # Bump index and vertical pos
-            index += 1
-            ypos += 50
