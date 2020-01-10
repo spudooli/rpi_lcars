@@ -26,13 +26,13 @@ class ScreenMain(LcarsScreen):
         self.lastbalanceupdate = 0
         self.lastPowerUpdate = 0
 
-        self.bankaccount = LcarsText(colours.BLUE, (140, 150), "X", 2)
+        self.bankaccount = LcarsText(colours.BLUE, (140, 150), "", 2)
         all_sprites.add(self.bankaccount, layer=1)
-        self.power = LcarsText(colours.BLUE, (200, 150), "X", 1.8)
+        self.power = LcarsText(colours.BLUE, (200, 150), "", 1.8)
         all_sprites.add(self.power, layer=1)
-        self.indoorTemperature = LcarsText(colours.BLUE, (260, 150), "X", 2)
+        self.indoorTemperature = LcarsText(colours.BLUE, (260, 150), "", 2)
         all_sprites.add(self.indoorTemperature, layer=1)
-        self.outdoorTemperature = LcarsText(colours.BLUE, (320, 150), "X", 2)
+        self.outdoorTemperature = LcarsText(colours.BLUE, (320, 150), "", 2)
         all_sprites.add(self.outdoorTemperature, layer=1)
 
         # Static text
@@ -49,8 +49,8 @@ class ScreenMain(LcarsScreen):
 
         self.bankaccount.setText("Bank account " + get_statusfiledata("otherbalance"))
         self.power.setText("Power " + get_statusfiledata("power"))
-        self.power.setText("Inside " + get_statusfiledata("indoorTemperature"))
-        self.power.setText("Outside " + get_statusfiledata("outdoorTemperature"))
+        self.indoorTemperature.setText("Inside " + get_statusfiledata("indoorTemperature"))
+        self.outdoorTemperature.setText("Outside " + get_statusfiledata("outdoorTemperature"))
 
         # Rotating Deep Space 9
         all_sprites.add(LcarsGifImage("/home/pi/rpi_lcars/assets/animated/ds9_3d.gif", (148, 475), 100), layer=1)
