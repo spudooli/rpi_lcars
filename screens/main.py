@@ -23,12 +23,17 @@ class ScreenMain(LcarsScreen):
         self.lastClockUpdate = 0
         all_sprites.add(self.stardate, layer=1)
 
-        self.lastStatusFileUpdate = 0
+        self.lastbalanceupdate = 0
+        self.lastPowerUpdate = 0
 
-        self.bankaccount = LcarsText(colours.BLUE, (140, 150), "X", 1.8)
+        self.bankaccount = LcarsText(colours.BLUE, (140, 150), "X", 2)
         all_sprites.add(self.bankaccount, layer=1)
         self.power = LcarsText(colours.BLUE, (200, 150), "X", 1.8)
         all_sprites.add(self.power, layer=1)
+        self.indoorTemperature = LcarsText(colours.BLUE, (260, 150), "X", 2)
+        all_sprites.add(self.indoorTemperature, layer=1)
+        self.outdoorTemperature = LcarsText(colours.BLUE, (320, 150), "X", 2)
+        all_sprites.add(self.outdoorTemperature, layer=1)
 
         # Static text
         all_sprites.add(LcarsText(colours.BLACK, (8, 40), "SPUDOOLI", 1.2), layer=1)
@@ -42,7 +47,10 @@ class ScreenMain(LcarsScreen):
         all_sprites.add(LcarsButton(randomcolor(), "nav", (310, 15), "OPERATIONS", self.load_auth), layer=4)
         all_sprites.add(LcarsButton(randomcolor(), "nav", (365, 15), "", self.load_network), layer=4)
 
-        self.bankaccount.setText(get_balance())
+        self.bankaccount.setText("Bank account " + get_statusfiledata("otherbalance"))
+        self.power.setText("Power " + get_statusfiledata("power")))
+        self.power.setText("Inside " + get_statusfiledata("indoorTemperature"))
+        self.power.setText("Outside " + get_statusfiledata("outdoorTemperature"))
 
         # Rotating Deep Space 9
         all_sprites.add(LcarsGifImage("/home/pi/rpi_lcars/assets/animated/ds9_3d.gif", (148, 475), 100), layer=1)
@@ -54,12 +62,14 @@ class ScreenMain(LcarsScreen):
         if pygame.time.get_ticks() - self.lastClockUpdate > 1000:
             self.stardate.setText("{}".format(datetime.now().strftime("%a %b %d, %Y - %X")))
             self.lastClockUpdate = pygame.time.get_ticks()
-        if pygame.time.get_ticks() - self.lastStatusFileUpdate > 1800000:
+        if pygame.time.get_ticks() - self.lastbalanceupdate > 1800000:
             self.bankaccount.setText("Bank account " + get_statusfiledata("otherbalance"))
-            self.lastStatusFileUpdate = pygame.time.get_ticks()
+            self.lastbalanceupdate = pygame.time.get_ticks()
         if pygame.time.get_ticks() - self.lastPowerUpdate > 60000:
-            self.bankaccount.setText("Power " + get_statusfiledata("power"))
-            self.lastStatusFileUpdate = pygame.time.get_ticks()
+            self.power.setText("Power " + get_statusfiledata("power"))
+            self.power.setText("Inside " + get_statusfiledata("indoorTemperature"))
+            self.power.setText("Outside " + get_statusfiledata("outdoorTemperature"))
+            self.lastPowerUpdate = pygame.time.get_ticks()
         LcarsScreen.update(self, screenSurface, fpsClock)
 
     def handleEvents(self, event, fpsClock):
