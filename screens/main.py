@@ -67,8 +67,8 @@ class ScreenMain(LcarsScreen):
             self.lastbalanceupdate = pygame.time.get_ticks()
         if pygame.time.get_ticks() - self.lastPowerUpdate > 60000:
             self.power.setText("Power " + get_statusfiledata("power"))
-            self.power.setText("Inside " + get_statusfiledata("indoorTemperature"))
-            self.power.setText("Outside " + get_statusfiledata("outdoorTemperature"))
+            self.indoorTemperature.setText("Inside " + get_statusfiledata("indoorTemperature"))
+            self.outdoorTemperature.setText("Outside " + get_statusfiledata("outdoorTemperature"))
             self.lastPowerUpdate = pygame.time.get_ticks()
         LcarsScreen.update(self, screenSurface, fpsClock)
 
