@@ -16,8 +16,8 @@ def backlightchanger():
             backlight.brightness = 0
             backlight.power = False
 
-button1 = Button(21,bounce_time=2)
 
-button1.when_pressed = backlightchanger
 
-pause()
+while True:
+    button1 = Button(21,bounce_time=2)
+    button1.when_pressed = backlightchanger
