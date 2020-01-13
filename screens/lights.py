@@ -13,6 +13,10 @@ from ui.widgets.gifimage import LcarsGifImage
 from ui.widgets.lcars_widgets import LcarsText, LcarsButton
 from ui.widgets.screen import LcarsScreen
 
+import paho.mqtt.client as paho
+broker="192.168.1.2"
+port=1883
+
 # Need to change class name to whatever screen is to be called
 class ScreenLights(LcarsScreen):
     def setup(self, all_sprites):
