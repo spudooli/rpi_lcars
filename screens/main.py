@@ -26,14 +26,22 @@ class ScreenMain(LcarsScreen):
         self.lastbalanceupdate = 0
         self.lastPowerUpdate = 0
 
-        self.bankaccount = LcarsText(colours.BLUE, (140, 150), "", 2)
+        self.bankaccount = LcarsText(colours.BLUE, (140, 150), "", 4)
+        self.bankaccountlabel = LcarsText(colours.BLUE, (140, 150), "BANK", 1.2)
         all_sprites.add(self.bankaccount, layer=1)
-        self.power = LcarsText(colours.BLUE, (200, 150), "", 1.8)
+        all_sprites.add(self.bankaccountlabel, layer=1)
+        self.power = LcarsText(colours.BLUE, (200, 150), "", 4)
+        self.powerlabel = LcarsText(colours.BLUE, (200, 150), "POWER", 1.2)
         all_sprites.add(self.power, layer=1)
-        self.indoorTemperature = LcarsText(colours.BLUE, (260, 150), "", 2)
+        all_sprites.add(self.powerlabel, layer=1)
+        self.indoorTemperature = LcarsText(colours.BLUE, (260, 150), "", 4)
+        self.indoorTemperaturelabel = LcarsText(colours.BLUE, (260, 150), "INSIDE", 1.2)
         all_sprites.add(self.indoorTemperature, layer=1)
-        self.outdoorTemperature = LcarsText(colours.BLUE, (320, 150), "", 2)
+        all_sprites.add(self.indoorTemperaturelabel, layer=1)
+        self.outdoorTemperature = LcarsText(colours.BLUE, (320, 150), "", 4)
+        self.outdoorTemperaturelabel = LcarsText(colours.BLUE, (320, 150), "OUTSIDE", 1.2)
         all_sprites.add(self.outdoorTemperature, layer=1)
+        all_sprites.add(self.outdoorTemperaturelabel, layer=1)
 
         # Static text
         all_sprites.add(LcarsText(colours.BLACK, (8, 40), "SPUDOOLI", 1.2), layer=1)
@@ -53,7 +61,7 @@ class ScreenMain(LcarsScreen):
         self.outdoorTemperature.setText("Outside " + get_statusfiledata("outdoorTemperature").split(".")[0])
 
         # Rotating Deep Space 9
-        all_sprites.add(LcarsGifImage("/home/pi/rpi_lcars/assets/animated/ds9_3d.gif", (148, 475), 100), layer=1)
+        #all_sprites.add(LcarsGifImage("/home/pi/rpi_lcars/assets/animated/ds9_3d.gif", (148, 475), 100), layer=1)
 
         self.beep1 = Sound("/home/pi/rpi_lcars/assets/audio/panel/201.wav")
         Sound("/home/pi/rpi_lcars/assets/audio/panel/220.wav").play()
@@ -63,12 +71,12 @@ class ScreenMain(LcarsScreen):
             self.stardate.setText("{}".format(datetime.now().strftime("%a %b %d, %Y - %X")))
             self.lastClockUpdate = pygame.time.get_ticks()
         if pygame.time.get_ticks() - self.lastbalanceupdate > 1800000:
-            self.bankaccount.setText("Bank account " + get_statusfiledata("otherbalance").split(".")[0])
+            self.bankaccount.setText(get_statusfiledata("otherbalance").split(".")[0])
             self.lastbalanceupdate = pygame.time.get_ticks()
         if pygame.time.get_ticks() - self.lastPowerUpdate > 60000:
-            self.power.setText("Power " + get_statusfiledata("power"))
-            self.indoorTemperature.setText("Inside " + get_statusfiledata("indoorTemperature"))
-            self.outdoorTemperature.setText("Outside " + get_statusfiledata("outdoorTemperature").split(".")[0])
+            self.power.setText(get_statusfiledata("power"))
+            self.indoorTemperature.setText(get_statusfiledata("indoorTemperature"))
+            self.outdoorTemperature.setText(get_statusfiledata("outdoorTemperature"))
             self.lastPowerUpdate = pygame.time.get_ticks()
         LcarsScreen.update(self, screenSurface, fpsClock)
 
