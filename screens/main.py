@@ -55,10 +55,10 @@ class ScreenMain(LcarsScreen):
         all_sprites.add(LcarsButton(randomcolor(), "nav", (310, 15), "OPERATIONS", self.load_auth), layer=4)
         all_sprites.add(LcarsButton(randomcolor(), "nav", (365, 15), "", self.load_network), layer=4)
 
-        self.bankaccount.setText("Bank account " + get_statusfiledata("otherbalance").split(".")[0])
-        self.power.setText("Power " + get_statusfiledata("power"))
-        self.indoorTemperature.setText("Inside " + get_statusfiledata("indoorTemperature"))
-        self.outdoorTemperature.setText("Outside " + get_statusfiledata("outdoorTemperature").split(".")[0])
+        self.bankaccount.setText(get_statusfiledata("otherbalance").split(".")[0])
+        self.power.setText(get_statusfiledata("power"))
+        self.indoorTemperature.setText(get_statusfiledata("indoorTemperature"))
+        self.outdoorTemperature.setText(get_statusfiledata("outdoorTemperature"))
 
         # Rotating Deep Space 9
         #all_sprites.add(LcarsGifImage("/home/pi/rpi_lcars/assets/animated/ds9_3d.gif", (148, 475), 100), layer=1)
