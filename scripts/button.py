@@ -5,15 +5,16 @@ from rpi_backlight import Backlight
 backlight = Backlight()
 
 def backlightchanger():
-    if backlight.brightness > "0"
+    if not backlight.power:
         print("Backlight is off, turning it on now")
         with backlight.fade(duration=1):
             backlight.brightness = 100
 
-    if backlightState =="0":
+    if backlight.power:
         print("Backlight is on, turning it off")
         with backlight.fade(duration=1):
             backlight.brightness = 0
+            backlight.power = False
 
 button1 = Button(21,bounce_time=2)
 
