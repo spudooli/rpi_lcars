@@ -1,13 +1,20 @@
 from gpiozero import Button
 from signal import pause
 
-def say_hello(button, text = ""):
-    print(text + str(button.pin.number))
+backlightState = True
 
 
-button2 = Button(21)
+def backlight():
+    if backlightState:
+        print("Backlight is off")
+        backlightState = False
+    if not backlightState:
+        print("Backlight is on")
+        backlightState = True
+    
+button1 = Button(21,bounce_time=2)
 
-button1.when_pressed = say_hello
+button1.when_pressed = backlight
 
 
 pause()
