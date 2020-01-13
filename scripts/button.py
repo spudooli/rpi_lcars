@@ -1,20 +1,19 @@
 from gpiozero import Button
 from signal import pause
-
-backlightState = True
-
+import subprocess
 
 def backlight():
-    if backlightState:
-        print("Backlight is off")
-        backlightState = False
-    if not backlightState:
-        print("Backlight is on")
-        backlightState = True
-    
+    bl = open(BASEDIR + "/sys/class/backlight/rpi_backlight/bl_power", "r")
+    backlightState = ob.read()
+    if backlightState =="1"
+        print("Backlight is off, turning it on now")
+        subprocess.Popen(['echo','0','|','sudo','tee','/sys/class/backlight/rpi_backlight/bl_power'
+    if backlightState =="0":
+        print("Backlight is on, turning it off")
+        subprocess.Popen(['echo','1','|','sudo','tee','/sys/class/backlight/rpi_backlight/bl_power'
+
 button1 = Button(21,bounce_time=2)
 
 button1.when_pressed = backlight
-
 
 pause()
