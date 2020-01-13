@@ -13,10 +13,6 @@ from ui.widgets.gifimage import LcarsGifImage
 from ui.widgets.lcars_widgets import LcarsText, LcarsButton
 from ui.widgets.screen import LcarsScreen
 
-import paho.mqtt.client as paho
-broker="192.168.1.2"
-port=1883
-
 # Need to change class name to whatever screen is to be called
 class ScreenLights(LcarsScreen):
     def setup(self, all_sprites):
@@ -40,14 +36,14 @@ class ScreenLights(LcarsScreen):
         all_sprites.add(LcarsButton(randomcolor(), "nav", (310, 15), "LIVING ROOM", self.nullfunction), layer=2)
         all_sprites.add(LcarsButton(randomcolor(), "nav", (365, 15), "", self.nullfunction), layer=2)
 
-        # Local hardware
-        all_sprites.add(LcarsText(colours.ORANGE, (140, 175), "All Lights", 2), layer=3)
+        # Main lights control
+        all_sprites.add(LcarsText(colours.BLUE, (140, 175), "All Lights", 2), layer=3)
         all_sprites.add(LcarsButton(colours.ORANGE, "btn", (140, 460), "ON", self.alllightson), layer=3)
         all_sprites.add(LcarsButton(colours.RED_BROWN, "btn", (140, 610), "OFF", self.alllightsoff), layer=3)
-        all_sprites.add(LcarsText(colours.ORANGE, (200, 175), "All Outside", 2), layer=3)
+        all_sprites.add(LcarsText(colours.BLUE, (200, 175), "All Outside", 2), layer=3)
         all_sprites.add(LcarsButton(colours.ORANGE, "btn", (200, 460), "ON", self.outsidelightson), layer=3)
         all_sprites.add(LcarsButton(colours.RED_BROWN, "btn", (200, 610), "OFF", self.outsidelightsoff), layer=3)
-        all_sprites.add(LcarsText(colours.ORANGE, (260, 175), "Living Room", 2), layer=3)
+        all_sprites.add(LcarsText(colours.BLUE, (260, 175), "Living Room", 2), layer=3)
         all_sprites.add(LcarsButton(colours.ORANGE, "btn", (260, 460), "ON", self.livingroomlightson), layer=3)
         all_sprites.add(LcarsButton(colours.RED_BROWN, "btn", (260, 610), "OFF", self.livingroomlightson), layer=3)
 
@@ -55,22 +51,22 @@ class ScreenLights(LcarsScreen):
 
         # LCARS UI
         # Outside sub-menu
-        all_sprites.add(LcarsText(colours.ORANGE, (140, 175), "All Outside", 2), layer=4)
+        all_sprites.add(LcarsText(colours.BLUE, (140, 175), "All Outside", 2), layer=4)
         all_sprites.add(LcarsButton(colours.ORANGE, "btn", (140, 460), "ON", self.outsidelightson), layer=4)
         all_sprites.add(LcarsButton(colours.RED_BROWN, "btn", (140, 610), "OFF", self.outsidelightsoff), layer=4)
-        all_sprites.add(LcarsText(colours.ORANGE, (200, 175), "Front Door", 2), layer=4)
+        all_sprites.add(LcarsText(colours.BLUE, (200, 175), "Front Door", 2), layer=4)
         all_sprites.add(LcarsButton(colours.ORANGE, "btn", (200, 460), "ON", self.frontdoorlightson), layer=4)
         all_sprites.add(LcarsButton(colours.RED_BROWN, "btn", (200, 610), "OFF", self.frontdoorlightsoff), layer=4)
-        all_sprites.add(LcarsText(colours.ORANGE, (260, 175), "Verandah", 2), layer=4)
+        all_sprites.add(LcarsText(colours.BLUE, (260, 175), "Verandah", 2), layer=4)
         all_sprites.add(LcarsButton(colours.ORANGE, "btn", (260, 460), "ON", self.verandahlightson), layer=4)
         all_sprites.add(LcarsButton(colours.RED_BROWN, "btn", (260, 610), "OFF", self.verandahlightsoff), layer=4)
-        all_sprites.add(LcarsText(colours.ORANGE, (320, 175), "Garden", 2), layer=4)
+        all_sprites.add(LcarsText(colours.BLUE, (320, 175), "Garden", 2), layer=4)
         all_sprites.add(LcarsButton(colours.ORANGE, "btn", (320, 460), "ON", self.gardenlightson), layer=4)
         all_sprites.add(LcarsButton(colours.RED_BROWN, "btn", (320, 610), "OFF", self.gardenlightsoff), layer=4)
 
         self.outside = all_sprites.get_sprites_from_layer(4)
 
-                # Outside sub-menu
+                # Bedroom sub-menu
         all_sprites.add(LcarsText(colours.ORANGE, (140, 175), "All Bedroom", 2), layer=5)
         all_sprites.add(LcarsButton(colours.ORANGE, "btn", (140, 460), "ON", self.allbedroomlightson), layer=5)
         all_sprites.add(LcarsButton(colours.RED_BROWN, "btn", (140, 610), "OFF", self.allbedroomlightsoff), layer=5)
