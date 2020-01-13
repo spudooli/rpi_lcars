@@ -9,8 +9,7 @@ def backlightchanger():
     if not backlight.power:
         print("Backlight is off, turning it on now")
         backlight.power = True
-
-    if backlight.power:
+    elif backlight.power:
         print("Backlight is on, turning it off")
         with backlight.fade(duration=1):
             backlight.brightness = 0
