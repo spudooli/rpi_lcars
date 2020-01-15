@@ -1,6 +1,7 @@
 from gpiozero import Button
 from signal import pause
 from rpi_backlight import Backlight
+import time
 
 backlight = Backlight()
 
@@ -21,3 +22,4 @@ button1 = Button(21)
 
 while True:
     button1.when_released = backlightchanger
+    time.sleep(0.2)
