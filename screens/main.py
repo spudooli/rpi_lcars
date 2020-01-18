@@ -56,6 +56,11 @@ class ScreenMain(LcarsScreen):
         all_sprites.add(self.indoorPressure, layer=1)
         all_sprites.add(self.indoorPressurelabel, layer=1)
 
+        self.total100x60label = LcarsText(colours.BLUE, (278, 555), "100 X 60", 1.2)
+        self.total100x60 = LcarsText(colours.BLUE, (288, 555), "", 4)
+        all_sprites.add(self.total100x60, layer=1)
+        all_sprites.add(self.total100x60label, layer=1)
+
         # Static text
         all_sprites.add(LcarsText(colours.BLACK, (8, 40), "SPUDOOLI", 1.2), layer=1)
         all_sprites.add(LcarsText(colours.ORANGE, (0, 135), "", 2), layer=1)
@@ -73,8 +78,8 @@ class ScreenMain(LcarsScreen):
         self.indoorTemperature.setText(get_statusfiledata("indoorTemperature"))
         self.outdoorTemperature.setText(get_statusfiledata("outdoorTemperature"))
         self.kitchenTemperature.setText(get_statusfiledata("kitchenTemperature"))
-        self.indoorPressure.setText(get_statusfiledata("indoorPressure"))
-
+        self.indoorPressure.setText(get_statusfiledata("indoorPressure")[:4])
+        self.total100x60.setText(get_statusfiledata("total100x60"))
         # Rotating Deep Space 9
         #all_sprites.add(LcarsGifImage("/home/pi/rpi_lcars/assets/animated/ds9_3d.gif", (148, 475), 100), layer=1)
 
@@ -93,6 +98,8 @@ class ScreenMain(LcarsScreen):
             self.indoorTemperature.setText(get_statusfiledata("indoorTemperature"))
             self.outdoorTemperature.setText(get_statusfiledata("outdoorTemperature"))
             self.kitchenTemperature.setText(get_statusfiledata("kitchenTemperature"))
+            self.kitchenTemperature.setText(get_statusfiledata("indoorPressure"))
+            self.kitchenTemperature.setText(get_statusfiledata("total100x60"))
             self.lastPowerUpdate = pygame.time.get_ticks()
         LcarsScreen.update(self, screenSurface, fpsClock)
 
