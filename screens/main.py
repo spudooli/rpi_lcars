@@ -26,8 +26,8 @@ class ScreenMain(LcarsScreen):
         self.lastbalanceupdate = 0
         self.lastPowerUpdate = 0
 
-        self.indoorTemperaturelabel = LcarsText(colours.BLUE, (130, 150), "INSIDE", 1.2)
-        self.indoorTemperature = LcarsText(colours.BLUE, (140, 150), "", 4)
+        self.indoorTemperaturelabel = LcarsText(colours.BLUE, (163, 182), "INSIDE", 1.2)
+        self.indoorTemperature = LcarsText(colours.BLUE, (173, 182), "", 4)
         all_sprites.add(self.indoorTemperature, layer=1)
         all_sprites.add(self.indoorTemperaturelabel, layer=1)
 
