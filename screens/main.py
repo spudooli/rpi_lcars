@@ -45,6 +45,11 @@ class ScreenMain(LcarsScreen):
         self.bankaccount = LcarsText(colours.BLUE, (173, 555), "", 4)
         all_sprites.add(self.bankaccount, layer=1)
         all_sprites.add(self.bankaccountlabel, layer=1)
+        
+        self.kitchenTemperaturelabel = LcarsText(colours.BLUE, (278, 182), "Kitchen", 1.2)
+        self.kitchenTemperature = LcarsText(colours.BLUE, (288, 182), "", 4)
+        all_sprites.add(self.kitchenTemperature, layer=1)
+        all_sprites.add(self.kitchenTemperaturelabel, layer=1)
 
         # Static text
         all_sprites.add(LcarsText(colours.BLACK, (8, 40), "SPUDOOLI", 1.2), layer=1)
@@ -62,6 +67,7 @@ class ScreenMain(LcarsScreen):
         self.power.setText(get_statusfiledata("power"))
         self.indoorTemperature.setText(get_statusfiledata("indoorTemperature"))
         self.outdoorTemperature.setText(get_statusfiledata("outdoorTemperature"))
+        self.kitchenTemperature.setText(get_statusfiledata("kitchenTemperature"))
 
         # Rotating Deep Space 9
         #all_sprites.add(LcarsGifImage("/home/pi/rpi_lcars/assets/animated/ds9_3d.gif", (148, 475), 100), layer=1)
@@ -80,6 +86,7 @@ class ScreenMain(LcarsScreen):
             self.power.setText(get_statusfiledata("power"))
             self.indoorTemperature.setText(get_statusfiledata("indoorTemperature"))
             self.outdoorTemperature.setText(get_statusfiledata("outdoorTemperature"))
+            self.kitchenTemperature.setText(get_statusfiledata("kitchenTemperature"))
             self.lastPowerUpdate = pygame.time.get_ticks()
         LcarsScreen.update(self, screenSurface, fpsClock)
 
