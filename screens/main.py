@@ -79,7 +79,7 @@ class ScreenMain(LcarsScreen):
         self.outdoorTemperature.setText(get_statusfiledata("outdoorTemperature"))
         self.kitchenTemperature.setText(get_statusfiledata("kitchenTemperature"))
         self.indoorPressure.setText(get_statusfiledata("indoorPressure")[:4])
-        self.total100x60.setText(get_statusfiledata("total100x60"))
+        self.total100x60.setText(get_statusfiledata("total100x60").split(".")[0])
         # Rotating Deep Space 9
         #all_sprites.add(LcarsGifImage("/home/pi/rpi_lcars/assets/animated/ds9_3d.gif", (148, 475), 100), layer=1)
 
@@ -98,8 +98,8 @@ class ScreenMain(LcarsScreen):
             self.indoorTemperature.setText(get_statusfiledata("indoorTemperature"))
             self.outdoorTemperature.setText(get_statusfiledata("outdoorTemperature"))
             self.kitchenTemperature.setText(get_statusfiledata("kitchenTemperature"))
-            self.kitchenTemperature.setText(get_statusfiledata("indoorPressure"))
-            self.kitchenTemperature.setText(get_statusfiledata("total100x60"))
+            self.indoorPressure.setText(get_statusfiledata("indoorPressure")[:4])
+            self.total100x60.setText(get_statusfiledata("total100x60").split(".")[0])
             self.lastPowerUpdate = pygame.time.get_ticks()
         LcarsScreen.update(self, screenSurface, fpsClock)
 
