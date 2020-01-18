@@ -46,10 +46,15 @@ class ScreenMain(LcarsScreen):
         all_sprites.add(self.bankaccount, layer=1)
         all_sprites.add(self.bankaccountlabel, layer=1)
         
-        self.kitchenTemperaturelabel = LcarsText(colours.BLUE, (278, 182), "Kitchen", 1.2)
+        self.kitchenTemperaturelabel = LcarsText(colours.BLUE, (278, 182), "KITCHEN", 1.2)
         self.kitchenTemperature = LcarsText(colours.BLUE, (288, 182), "", 4)
         all_sprites.add(self.kitchenTemperature, layer=1)
         all_sprites.add(self.kitchenTemperaturelabel, layer=1)
+
+        self.indoorPressurelabel = LcarsText(colours.BLUE, (278, 390), "PRESSURE", 1.2)
+        self.indoorPressure = LcarsText(colours.BLUE, (288, 390), "", 4)
+        all_sprites.add(self.indoorPressure, layer=1)
+        all_sprites.add(self.indoorPressurelabel, layer=1)
 
         # Static text
         all_sprites.add(LcarsText(colours.BLACK, (8, 40), "SPUDOOLI", 1.2), layer=1)
@@ -68,6 +73,7 @@ class ScreenMain(LcarsScreen):
         self.indoorTemperature.setText(get_statusfiledata("indoorTemperature"))
         self.outdoorTemperature.setText(get_statusfiledata("outdoorTemperature"))
         self.kitchenTemperature.setText(get_statusfiledata("kitchenTemperature"))
+        self.indoorPressure.setText(get_statusfiledata("indoorPressure"))
 
         # Rotating Deep Space 9
         #all_sprites.add(LcarsGifImage("/home/pi/rpi_lcars/assets/animated/ds9_3d.gif", (148, 475), 100), layer=1)
