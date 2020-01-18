@@ -31,18 +31,18 @@ class ScreenMain(LcarsScreen):
         all_sprites.add(self.indoorTemperature, layer=1)
         all_sprites.add(self.indoorTemperaturelabel, layer=1)
 
-        self.outdoorTemperaturelabel = LcarsText(colours.BLUE, (130, 286), "OUTSIDE", 1.2)
-        self.outdoorTemperature = LcarsText(colours.BLUE, (140, 286), "", 4)
+        self.outdoorTemperaturelabel = LcarsText(colours.BLUE, (163, 289), "OUTSIDE", 1.2)
+        self.outdoorTemperature = LcarsText(colours.BLUE, (173, 289), "", 4)
         all_sprites.add(self.outdoorTemperature, layer=1)
         all_sprites.add(self.outdoorTemperaturelabel, layer=1)
 
-        self.powerlabel = LcarsText(colours.BLUE, (130, 415), "POWER", 1.2)
-        self.power = LcarsText(colours.BLUE, (140, 415), "", 4)
+        self.powerlabel = LcarsText(colours.BLUE, (163, 390), "POWER", 1.2)
+        self.power = LcarsText(colours.BLUE, (173, 390), "", 4)
         all_sprites.add(self.power, layer=1)
         all_sprites.add(self.powerlabel, layer=1)
 
-        self.bankaccountlabel = LcarsText(colours.BLUE, (130, 600), "BANK", 1.2)
-        self.bankaccount = LcarsText(colours.BLUE, (140, 600), "", 4)
+        self.bankaccountlabel = LcarsText(colours.BLUE, (163, 555), "BANK", 1.2)
+        self.bankaccount = LcarsText(colours.BLUE, (173, 555), "", 4)
         all_sprites.add(self.bankaccount, layer=1)
         all_sprites.add(self.bankaccountlabel, layer=1)
 
