@@ -145,53 +145,46 @@ class ScreenLights(LcarsScreen):
         subprocess.call(["shutdown"])
     
     def alllightson(self, item, event, clock):
-        self.client1.publish("house/lights/all", "off")
-        #subprocess.Popen(['bash','/home/pi/rpi_lcars/scripts/ssh-commands.sh', 'alllightson'])
+        self.client1.publish("house/lights/all", "on")
     
     def alllightsoff(self, item, event, clock):
         self.client1.publish("house/lights/all", "off")
-        #subprocess.Popen(['bash','/home/pi/rpi_lcars/scripts/ssh-commands.sh', 'alllightsoff'])
 
     def outsidelightson(self, item, event, clock):
-        subprocess.Popen(['bash','/home/pi/rpi_lcars/scripts/ssh-commands.sh', 'outsidelightson'])
+        self.client1.publish("house/lights/outside", "on")
     
     def outsidelightsoff(self, item, event, clock):
-        subprocess.Popen(['bash','/home/pi/rpi_lcars/scripts/ssh-commands.sh', 'outsidelightson'])
+        self.client1.publish("house/lights/outside", "off")
     
     def livingroomlightson(self, item, event, clock):
-        subprocess.call(['bash','/home/pi/rpi_lcars/scripts/ssh-commands.sh', 'livingroomlightsson'])
+        self.client1.publish("house/lights/livingroom", "on")
     
     def livingroomlightsoff(self, item, event, clock):
-        subprocess.call(['bash','/home/pi/rpi_lcars/scripts/ssh-commands.sh', 'livingroomlightssoff'])
+        self.client1.publish("house/lights/livingroom", "off")
     
     def frontdoorlightson(self, item, event, clock):
-        subprocess.Popen(['bash','/home/pi/rpi_lcars/scripts/ssh-commands.sh', 'frontdoorlighton'])
+        self.client1.publish("house/lights/frontdoor", "on")
     
     def frontdoorlightsoff(self, item, event, clock):
-        subprocess.Popen(['bash','/home/pi/rpi_lcars/scripts/ssh-commands.sh', 'frontdoorlightoff'])
+        self.client1.publish("house/lights/frontdoor", "off")
     
     def verandahlightson(self, item, event, clock):
-        subprocess.Popen(['bash','/home/pi/rpi_lcars/scripts/ssh-commands.sh', 'verandahlightson'])
+        self.client1.publish("house/lights/verandah", "on")
     
     def verandahlightsoff(self, item, event, clock):
-        subprocess.Popen(['bash','/home/pi/rpi_lcars/scripts/ssh-commands.sh', 'verandahlightsoff'])
+        self.client1.publish("house/lights/verandah", "off")
     
     def gardenlightson(self, item, event, clock):
-        subprocess.Popen(['bash','/home/pi/rpi_lcars/scripts/ssh-commands.sh', 'gardenlightson'])
+        self.client1.publish("house/lights/garden", "on")
     
     def gardenlightsoff(self, item, event, clock):
-        subprocess.Popen(['bash','/home/pi/rpi_lcars/scripts/ssh-commands.sh', 'gardenlightsoff'])
+        self.client1.publish("house/lights/garden", "off")
     
     def allbedroomlightson(self, item, event, clock):
-        subprocess.Popen(['bash','/home/pi/rpi_lcars/scripts/ssh-commands.sh', 'allbedroomlightsoff'])
+        self.client1.publish("house/lights/bedroom", "on")
     
     def allbedroomlightsoff(self, item, event, clock):
-        subprocess.Popen(['bash','/home/pi/rpi_lcars/scripts/ssh-commands.sh', 'allbedroomlightsoff'])
-
-    def git_pull(self, item, event, clock):
-        subprocess.call(["git", "pull"])
-        # Force LCARS restart
-        sys.exit()
+        self.client1.publish("house/lights/bedroom", "off")
 
     def exit(self, item, event, clock):
         sys.exit()
