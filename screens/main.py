@@ -27,37 +27,37 @@ class ScreenMain(LcarsScreen):
         self.lastPowerUpdate = 0
 
         self.indoorTemperaturelabel = LcarsText(colours.BLUE, (163, 182), "INSIDE", 1.2)
-        self.indoorTemperature = LcarsText(colours.BLUE, (173, 182), "", 4)
+        self.indoorTemperature = LcarsText(colours.BLUE, (173, 182), "", 5)
         all_sprites.add(self.indoorTemperature, layer=1)
         all_sprites.add(self.indoorTemperaturelabel, layer=1)
 
         self.outdoorTemperaturelabel = LcarsText(colours.BLUE, (163, 289), "OUTSIDE", 1.2)
-        self.outdoorTemperature = LcarsText(colours.BLUE, (173, 289), "", 4)
+        self.outdoorTemperature = LcarsText(colours.BLUE, (173, 289), "", 5)
         all_sprites.add(self.outdoorTemperature, layer=1)
         all_sprites.add(self.outdoorTemperaturelabel, layer=1)
 
         self.powerlabel = LcarsText(colours.BLUE, (163, 390), "POWER", 1.2)
-        self.power = LcarsText(colours.BLUE, (173, 390), "", 4)
+        self.power = LcarsText(colours.BLUE, (173, 390), "", 5)
         all_sprites.add(self.power, layer=1)
         all_sprites.add(self.powerlabel, layer=1)
 
         self.bankaccountlabel = LcarsText(colours.BLUE, (163, 555), "BANK", 1.2)
-        self.bankaccount = LcarsText(colours.BLUE, (173, 555), "", 4)
+        self.bankaccount = LcarsText(colours.BLUE, (173, 555), "", 5)
         all_sprites.add(self.bankaccount, layer=1)
         all_sprites.add(self.bankaccountlabel, layer=1)
         
         self.kitchenTemperaturelabel = LcarsText(colours.BLUE, (278, 182), "KITCHEN", 1.2)
-        self.kitchenTemperature = LcarsText(colours.BLUE, (288, 182), "", 4)
+        self.kitchenTemperature = LcarsText(colours.BLUE, (288, 182), "", 5)
         all_sprites.add(self.kitchenTemperature, layer=1)
         all_sprites.add(self.kitchenTemperaturelabel, layer=1)
 
         self.indoorPressurelabel = LcarsText(colours.BLUE, (278, 390), "PRESSURE", 1.2)
-        self.indoorPressure = LcarsText(colours.BLUE, (288, 390), "", 4)
+        self.indoorPressure = LcarsText(colours.BLUE, (288, 390), "", 5)
         all_sprites.add(self.indoorPressure, layer=1)
         all_sprites.add(self.indoorPressurelabel, layer=1)
 
         self.total100x60label = LcarsText(colours.BLUE, (278, 555), "100 X 60", 1.2)
-        self.total100x60 = LcarsText(colours.BLUE, (288, 555), "", 4)
+        self.total100x60 = LcarsText(colours.BLUE, (288, 555), "", 5)
         all_sprites.add(self.total100x60, layer=1)
         all_sprites.add(self.total100x60label, layer=1)
 
