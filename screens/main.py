@@ -26,23 +26,23 @@ class ScreenMain(LcarsScreen):
         self.lastbalanceupdate = 0
         self.lastPowerUpdate = 0
 
-        self.indoorTemperaturelabel = LcarsText(colours.BLUE, (163, 182), "INSIDE", 1.2)
-        self.indoorTemperature = LcarsText(colours.BLUE, (173, 182), "", 4.5)
+        self.indoorTemperaturelabel = LcarsText(colours.BLUE, (153, 182), "INSIDE", 1.2)
+        self.indoorTemperature = LcarsText(colours.BLUE, (163, 182), "", 4.5)
         all_sprites.add(self.indoorTemperature, layer=1)
         all_sprites.add(self.indoorTemperaturelabel, layer=1)
 
-        self.outdoorTemperaturelabel = LcarsText(colours.BLUE, (163, 289), "OUTSIDE", 1.2)
-        self.outdoorTemperature = LcarsText(colours.BLUE, (173, 289), "", 4.5)
+        self.outdoorTemperaturelabel = LcarsText(colours.BLUE, (153, 289), "OUTSIDE", 1.2)
+        self.outdoorTemperature = LcarsText(colours.BLUE, (163, 289), "", 4.5)
         all_sprites.add(self.outdoorTemperature, layer=1)
         all_sprites.add(self.outdoorTemperaturelabel, layer=1)
 
-        self.powerlabel = LcarsText(colours.BLUE, (163, 390), "POWER", 1.2)
-        self.power = LcarsText(colours.BLUE, (173, 390), "", 4.5)
+        self.powerlabel = LcarsText(colours.BLUE, (153, 390), "POWER", 1.2)
+        self.power = LcarsText(colours.BLUE, (163, 390), "", 4.5)
         all_sprites.add(self.power, layer=1)
         all_sprites.add(self.powerlabel, layer=1)
 
-        self.bankaccountlabel = LcarsText(colours.BLUE, (163, 555), "BANK", 1.2)
-        self.bankaccount = LcarsText(colours.BLUE, (173, 555), "", 4.5)
+        self.bankaccountlabel = LcarsText(colours.BLUE, (153, 555), "BANK", 1.2)
+        self.bankaccount = LcarsText(colours.BLUE, (163, 555), "", 4.5)
         all_sprites.add(self.bankaccount, layer=1)
         all_sprites.add(self.bankaccountlabel, layer=1)
         
