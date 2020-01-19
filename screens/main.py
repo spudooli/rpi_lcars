@@ -56,7 +56,7 @@ class ScreenMain(LcarsScreen):
         all_sprites.add(self.indoorPressure, layer=1)
         all_sprites.add(self.indoorPressurelabel, layer=1)
 
-        self.total100x60label = LcarsText(colours.BLUE, (278, 555), "100 X 60", 1.2)
+        self.total100x60label = LcarsText(colours.BLUE, (278, 555), "THE 100k by 60 PROJECT", 1.2)
         self.total100x60 = LcarsText(colours.BLUE, (288, 555), "", 4.5)
         all_sprites.add(self.total100x60, layer=1)
         all_sprites.add(self.total100x60label, layer=1)
