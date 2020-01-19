@@ -147,12 +147,15 @@ class ScreenLights(LcarsScreen):
         subprocess.call(["shutdown"])
     
     def alllightson(self, item, event, clock):
+        self.client1.reconnect()
         self.client1.publish("house/lights/all", "on")
     
     def alllightsoff(self, item, event, clock):
+        self.client1.reconnect()
         self.client1.publish("house/lights/all", "off")
 
     def outsidelightson(self, item, event, clock):
+        self.client1.reconnect()
         self.client1.publish("house/lights/outside", "on")
     
     def outsidelightsoff(self, item, event, clock):
