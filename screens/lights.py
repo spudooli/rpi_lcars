@@ -6,6 +6,7 @@ from pygame.mixer import Sound
 from ui.utils.loadinfo import *
 from ui.colours import randomcolor
 import sys
+import paho.mqtt.client as paho
 
 from ui import colours
 from ui.widgets.background import LcarsBackgroundImage, LcarsImage
@@ -15,6 +16,11 @@ from ui.widgets.screen import LcarsScreen
 
 # Need to change class name to whatever screen is to be called
 class ScreenLights(LcarsScreen):
+    broker="192.168.1.2"
+    port=1883
+    client1 = paho.Client("RPILCarsLights")
+    client1.connect(broker,port)
+
     def setup(self, all_sprites):
         # Load BG image
         all_sprites.add(LcarsBackgroundImage("/home/pi/rpi_lcars/assets/lcars_bg.png"), layer=0)
@@ -30,7 +36,7 @@ class ScreenLights(LcarsScreen):
 
         # Interfaces
         all_sprites.add(LcarsButton(colours.RED_BROWN, "btn", (6, 660), "MAIN", self.logoutHandler), layer=2)
-        all_sprites.add(LcarsButton(randomcolor(), "nav", (145, 15), "ALL Lights", self.display_hw), layer=2)
+        all_sprites.add(LcarsButton(randomcolor(), "nav", (145, 15), "ALL LIGHTS", self.display_hw), layer=2)
         all_sprites.add(LcarsButton(randomcolor(), "nav", (200, 15), "OUTSIDE", self.display_outside), layer=2)
         all_sprites.add(LcarsButton(randomcolor(), "nav", (255, 15), "BEDROOM", self.display_bedroom), layer=2)
         all_sprites.add(LcarsButton(randomcolor(), "nav", (310, 15), "LIVING ROOM", self.nullfunction), layer=2)
@@ -139,46 +145,48 @@ class ScreenLights(LcarsScreen):
         subprocess.call(["shutdown"])
     
     def alllightson(self, item, event, clock):
-        subprocess.Popen(['bash','/home/pi/rpi_lcars/scripts/ssh-commands.sh', 'alllightson'])
+        self.client1.publish("house/lights/all", "off")
+        #subprocess.Popen(['bash','/home/pi/rpi_lcars/scripts/ssh-commands.sh', 'alllightson'])
     
     def alllightsoff(self, item, event, clock):
-        subprocess.Popen(['bash','/home/pi/rpi_lcars/scripts/ssh-commands.sh', 'alllightsoff'])
+        self.client1.publish("house/lights/all", "off")
+        #subprocess.Popen(['bash','/home/pi/rpi_lcars/scripts/ssh-commands.sh', 'alllightsoff'])
 
     def outsidelightson(self, item, event, clock):
-        subprocess.call(["ssh dave@192.168.1.2 'bash /var/www/scripts/lights.sh outsidelightson"])
+        subprocess.Popen(['bash','/home/pi/rpi_lcars/scripts/ssh-commands.sh', 'outsidelightson'])
     
     def outsidelightsoff(self, item, event, clock):
-        subprocess.call(["ssh dave@192.168.1.2 'bash /var/www/scripts/lights.sh outsidelightson"])
+        subprocess.Popen(['bash','/home/pi/rpi_lcars/scripts/ssh-commands.sh', 'outsidelightson'])
     
     def livingroomlightson(self, item, event, clock):
-        subprocess.call(["'bash','/home/pi/rpi_lcars/scripts/ssh-commands.sh', 'livingroomlightsson'"])
+        subprocess.call(['bash','/home/pi/rpi_lcars/scripts/ssh-commands.sh', 'livingroomlightsson'])
     
     def livingroomlightsoff(self, item, event, clock):
-        subprocess.call(["'bash','/home/pi/rpi_lcars/scripts/ssh-commands.sh', 'livingroomlightssoff'"])
+        subprocess.call(['bash','/home/pi/rpi_lcars/scripts/ssh-commands.sh', 'livingroomlightssoff'])
     
     def frontdoorlightson(self, item, event, clock):
-        subprocess.call(["ssh dave@192.168.1.2 'bash /var/www/scripts/lights.sh frontdoorlighton"])
+        subprocess.Popen(['bash','/home/pi/rpi_lcars/scripts/ssh-commands.sh', 'frontdoorlighton'])
     
     def frontdoorlightsoff(self, item, event, clock):
-        subprocess.call(["ssh dave@192.168.1.2 'bash /var/www/scripts/lights.sh frontdoorlightoff"])
+        subprocess.Popen(['bash','/home/pi/rpi_lcars/scripts/ssh-commands.sh', 'frontdoorlightoff'])
     
     def verandahlightson(self, item, event, clock):
-        subprocess.call(["ssh dave@192.168.1.2 'bash /var/www/scripts/lights.sh verandahlightson"])
+        subprocess.Popen(['bash','/home/pi/rpi_lcars/scripts/ssh-commands.sh', 'verandahlightson'])
     
     def verandahlightsoff(self, item, event, clock):
-        subprocess.call(["ssh dave@192.168.1.2 'bash /var/www/scripts/lights.sh verandahlightsoff"])
+        subprocess.Popen(['bash','/home/pi/rpi_lcars/scripts/ssh-commands.sh', 'verandahlightsoff'])
     
     def gardenlightson(self, item, event, clock):
-        subprocess.call(["ssh dave@192.168.1.2 'bash /var/www/scripts/lights.sh gardenlightson"])
+        subprocess.Popen(['bash','/home/pi/rpi_lcars/scripts/ssh-commands.sh', 'gardenlightson'])
     
     def gardenlightsoff(self, item, event, clock):
-        subprocess.call(["ssh dave@192.168.1.2 'bash /var/www/scripts/lights.sh gardenlightsoff"])
+        subprocess.Popen(['bash','/home/pi/rpi_lcars/scripts/ssh-commands.sh', 'gardenlightsoff'])
     
     def allbedroomlightson(self, item, event, clock):
-        subprocess.call(["ssh dave@192.168.1.2 'bash /var/www/scripts/lights.sh allbedroomlightsoff"])
+        subprocess.Popen(['bash','/home/pi/rpi_lcars/scripts/ssh-commands.sh', 'allbedroomlightsoff'])
     
     def allbedroomlightsoff(self, item, event, clock):
-        subprocess.call(["ssh dave@192.168.1.2 'bash /var/www/scripts/lights.sh allbedroomlightsoff"])
+        subprocess.Popen(['bash','/home/pi/rpi_lcars/scripts/ssh-commands.sh', 'allbedroomlightsoff'])
 
     def git_pull(self, item, event, clock):
         subprocess.call(["git", "pull"])
