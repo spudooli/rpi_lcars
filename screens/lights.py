@@ -19,7 +19,7 @@ from ui.widgets.screen import LcarsScreen
 class ScreenLights(LcarsScreen):
     broker="192.168.1.2"
     port=1883
-    client1 = paho.Client(random.randint(1,999999))
+    client1 = paho.Client(random.random())
     client1.connect(broker,port)
 
     def setup(self, all_sprites):
