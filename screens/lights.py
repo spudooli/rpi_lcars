@@ -19,7 +19,7 @@ from ui.widgets.screen import LcarsScreen
 class ScreenLights(LcarsScreen):
     broker="192.168.1.2"
     port=1883
-    client1 = paho.Client()
+    client1 = paho.Client("RPILcars")
     client1.connect(broker,port)
     client1.reconnect()
 
@@ -156,6 +156,7 @@ class ScreenLights(LcarsScreen):
         self.client1.publish("house/lights/outside", "on")
     
     def outsidelightsoff(self, item, event, clock):
+        self.client1.reconnect()
         self.client1.publish("house/lights/outside", "off")
     
     def livingroomlightson(self, item, event, clock):
