@@ -7,6 +7,7 @@ from ui.utils.loadinfo import *
 from ui.colours import randomcolor
 import sys
 import paho.mqtt.client as paho
+import random
 
 from ui import colours
 from ui.widgets.background import LcarsBackgroundImage, LcarsImage
@@ -18,7 +19,7 @@ from ui.widgets.screen import LcarsScreen
 class ScreenLights(LcarsScreen):
     broker="192.168.1.2"
     port=1883
-    client1 = paho.Client("RPILCarsLights")
+    client1 = paho.Client(random.randint(1,999999999999))
     client1.connect(broker,port)
 
     def setup(self, all_sprites):
