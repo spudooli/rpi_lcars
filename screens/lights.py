@@ -21,6 +21,7 @@ class ScreenLights(LcarsScreen):
     port=1883
     client1 = paho.Client()
     client1.connect(broker,port)
+    client1.reconnect()
 
     def setup(self, all_sprites):
         # Load BG image
