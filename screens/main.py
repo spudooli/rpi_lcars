@@ -18,7 +18,7 @@ from ui.widgets.screen import LcarsScreen
 from ui.widgets.sprite import LcarsMoveToMouse
 
 class ScreenMain(LcarsScreen):
-    q = Queue()
+    q = queue.Queue()
     t = Thread(target=mqttlistener)
     t.daemon = True
     t.start()
