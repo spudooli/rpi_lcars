@@ -5,10 +5,6 @@ from pygame.mixer import Sound
 from ui.utils.loadinfo import *
 from ui.colours import randomcolor
 from ui.utils.loadinfo import *
-import paho.mqtt.client as mqtt
-
-import queue
-from threading import Thread
 
 from ui import colours
 from ui.widgets.background import LcarsBackgroundImage, LcarsImage
@@ -18,31 +14,6 @@ from ui.widgets.screen import LcarsScreen
 from ui.widgets.sprite import LcarsMoveToMouse
 
 class ScreenMain(LcarsScreen):
-    def mqttlistener(self):
-        self.broker_url = "192.168.1.2"
-        self.broker_port = 1883
-        
-        def on_message(self, client, userdata, message):
-            self.topic = message.topic
-            self.command = message.payload
-            self.q.put(self.topic + " | " + self.command)
-            print("Topic: " + self.topic + " - " + self.command)
-
-        def on_connect(self, client, userdata, flags, rc):
-             print("Connected With Result Code "+rc)
-
-        self.client = mqtt.Client("rpiLCARS-main-screen-listener")
-        self.client.on_connect = on_connect
-        self.client.on_message = on_message
-        self.client.connect(self.broker_url, self.broker_port)
-        self.client.subscribe("house/#")
-        self.client.loop_forever()
-
-    q = queue.Queue()
-    t = Thread(target=mqttlistener)
-    t.daemon = True
-    t.start()
-
     def setup(self, all_sprites):
         # Load standard LCARS BG image
         all_sprites.add(LcarsBackgroundImage("/home/pi/rpi_lcars/assets/lcars_bg.png"), layer=0)
@@ -54,7 +25,6 @@ class ScreenMain(LcarsScreen):
 
         self.lastbalanceupdate = 0
         self.lastPowerUpdate = 0
-        self.queueLastUpdate = 0
 
         self.indoorTemperaturelabel = LcarsText(colours.BLUE, (153, 182), "INSIDE", 1.2)
         self.indoorTemperature = LcarsText(colours.BLUE, (163, 182), "", 4.5)
@@ -131,11 +101,6 @@ class ScreenMain(LcarsScreen):
             self.indoorPressure.setText(get_statusfiledata("indoorPressure")[:-2])
             self.total100x60.setText("$" + get_statusfiledata("total100x60").split(".")[0])
             self.lastPowerUpdate = pygame.time.get_ticks()
-        if pygame.time.get_ticks() - self.queueLastUpdate > 1000:
-            self.message = self.q.get()
-            print(self.message)
-            self.queueLastUpdate = pygame.time.get_ticks()
-
         LcarsScreen.update(self, screenSurface, fpsClock)
 
     def handleEvents(self, event, fpsClock):
