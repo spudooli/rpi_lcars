@@ -7,7 +7,7 @@ from ui.colours import randomcolor
 from ui.utils.loadinfo import *
 import paho.mqtt.client as mqtt
 
-from Queue import Queue
+import queue
 from threading import Thread
 
 from ui import colours
