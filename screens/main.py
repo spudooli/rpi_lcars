@@ -73,7 +73,7 @@ class ScreenMain(LcarsScreen):
         all_sprites.add(LcarsButton(randomcolor(), "nav", (310, 15), "OPERATIONS", self.load_auth), layer=4)
         all_sprites.add(LcarsButton(randomcolor(), "nav", (365, 15), "", self.load_network), layer=4)
 
-        self.bankaccount.setText("$" + get_statusfiledata("otherbalance").split(".")[0])
+        self.bankaccount.setText(get_statusfiledata("otherbalance").split(".")[0])
         self.power.setText(get_statusfiledata("power"))
         self.indoorTemperature.setText(get_statusfiledata("indoorTemperature"))
         self.outdoorTemperature.setText(get_statusfiledata("outdoorTemperature"))
@@ -91,7 +91,7 @@ class ScreenMain(LcarsScreen):
             self.stardate.setText("{}".format(datetime.now().strftime("%a %b %d, %Y - %X")))
             self.lastClockUpdate = pygame.time.get_ticks()
         if pygame.time.get_ticks() - self.lastbalanceupdate > 1800000:
-            self.bankaccount.setText("$" + get_statusfiledata("otherbalance").split(".")[0])
+            self.bankaccount.setText(get_statusfiledata("otherbalance").split(".")[0])
             self.lastbalanceupdate = pygame.time.get_ticks()
         if pygame.time.get_ticks() - self.lastPowerUpdate > 60000:
             self.power.setText(get_statusfiledata("power"))
