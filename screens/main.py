@@ -18,7 +18,7 @@ from ui.widgets.screen import LcarsScreen
 from ui.widgets.sprite import LcarsMoveToMouse
 
 class ScreenMain(LcarsScreen):
-    def mqttlistener(self):
+    def mqttlistener(self, channel):
         self.broker_url = "192.168.1.2"
         self.broker_port = 1883
         def on_message(self, client, userdata, message):
