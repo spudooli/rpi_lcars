@@ -24,7 +24,7 @@ class ScreenMain(LcarsScreen):
         def on_message(self, client, userdata, message):
             self.topic = message.topic
             self.command = message.payload
-            q.put(self.topic + " | " + self.command)
+            self.q.put(self.topic + " | " + self.command)
             print("Topic: " + self.topic + " - " + self.command)
 
         def on_connect(self, client, userdata, flags, rc):
