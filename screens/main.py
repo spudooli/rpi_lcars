@@ -131,7 +131,7 @@ class ScreenMain(LcarsScreen):
             self.total100x60.setText("$" + get_statusfiledata("total100x60").split(".")[0])
             self.lastPowerUpdate = pygame.time.get_ticks()
         if pygame.time.get_ticks() - self.queueLastUpdate > 1000:
-            self.message = q.get()
+            self.message = self.q.get()
             print(self.message)
             self.queueLastUpdate = pygame.time.get_ticks()
 
