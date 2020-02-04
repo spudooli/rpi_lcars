@@ -30,12 +30,12 @@ class ScreenMain(LcarsScreen):
         def on_connect(self, client, userdata, flags, rc):
              print("Connected With Result Code "+rc)
 
-        client = mqtt.Client("rpiLCARS-main-screen-listener")
-        client.on_connect = on_connect
-        client.on_message = on_message
-        client.connect(self.broker_url, self.broker_port)
-        client.subscribe("house/#")
-        client.loop_forever()
+        self.client = mqtt.Client("rpiLCARS-main-screen-listener")
+        self.client.on_connect = on_connect
+        self.client.on_message = on_message
+        self.client.connect(self.broker_url, self.broker_port)
+        self.client.subscribe("house/#")
+        self.client.loop_forever()
     
     q = queue.Queue()
     t = Thread(target=mqttlistener)
