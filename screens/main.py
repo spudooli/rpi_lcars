@@ -18,11 +18,6 @@ from ui.widgets.screen import LcarsScreen
 from ui.widgets.sprite import LcarsMoveToMouse
 
 class ScreenMain(LcarsScreen):
-    q = queue.Queue()
-    t = Thread(target=mqttlistener)
-    t.daemon = True
-    t.start()
-
     def mqttlistener(self):
         self.broker_url = "192.168.1.2"
         self.broker_port = 1883
@@ -41,6 +36,11 @@ class ScreenMain(LcarsScreen):
         client.connect(self.broker_url, self.broker_port)
         client.subscribe("house/#")
         client.loop_forever()
+    
+    q = queue.Queue()
+    t = Thread(target=mqttlistener)
+    t.daemon = True
+    t.start()
 
     def setup(self, all_sprites):
         # Load standard LCARS BG image
