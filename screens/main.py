@@ -21,6 +21,7 @@ class ScreenMain(LcarsScreen):
     def mqttlistener(self):
         self.broker_url = "192.168.1.2"
         self.broker_port = 1883
+        
         def on_message(self, client, userdata, message):
             self.topic = message.topic
             self.command = message.payload
@@ -36,7 +37,7 @@ class ScreenMain(LcarsScreen):
         self.client.connect(self.broker_url, self.broker_port)
         self.client.subscribe("house/#")
         self.client.loop_forever()
-    
+
     q = queue.Queue()
     t = Thread(target=mqttlistener)
     t.daemon = True
