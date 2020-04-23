@@ -53,7 +53,7 @@ class ScreenLights(LcarsScreen):
         all_sprites.add(LcarsButton(colours.RED_BROWN, "btn", (200, 610), "OFF", self.outsidelightsoff), layer=3)
         all_sprites.add(LcarsText(colours.BLUE, (260, 175), "Living Room", 2), layer=3)
         all_sprites.add(LcarsButton(colours.ORANGE, "btn", (260, 460), "ON", self.livingroomlightson), layer=3)
-        all_sprites.add(LcarsButton(colours.RED_BROWN, "btn", (260, 610), "OFF", self.livingroomlightson), layer=3)
+        all_sprites.add(LcarsButton(colours.RED_BROWN, "btn", (260, 610), "OFF", self.livingroomlightsoff), layer=3)
 
         self.hw = all_sprites.get_sprites_from_layer(3)
 
